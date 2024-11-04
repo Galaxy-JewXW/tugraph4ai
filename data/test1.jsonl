@@ -1,0 +1,250 @@
+{"id": "TEST1-1", "input_field": "在添加边时，如果指定的值不包含在value_dict中将如何处理？"}
+{"id": "TEST1-2", "input_field": "在使用LIMIT子句时，如果查询数据库中前两个人的名字，返回的名字是什么？"}
+{"id": "TEST1-3", "input_field": "如何查询数据库中现有角色及其相关信息？"}
+{"id": "TEST1-4", "input_field": "tugraph可以最多创建多少点边和点边上最多创建多少属性？"}
+{"id": "TEST1-5", "input_field": "我下载了4.3.2镜像，启动成功了，进入容器后没有 setup.sh 脚本是改变目录了吗？"}
+{"id": "TEST1-6", "input_field": "lgraph_server -d start的方式启动，不是会在pwd路径下生成pid文件吗？这个pid文件有参数能控制路径吗？"}
+{"id": "TEST1-7", "input_field": "如果在使用ARM机器（如M1芯片的Mac）编译TuGraph，应该如何修改cmake命令？"}
+{"id": "TEST1-8", "input_field": "启动参数中cleanup_dir指定的目录用于执行什么操作？"}
+{"id": "TEST1-9", "input_field": "使用什么命令来启动 TuGraph？"}
+{"id": "TEST1-10", "input_field": "TuGraph团队为了提高解析速度所进行的优化包括了哪些主要手段？"}
+{"id": "TEST1-11", "input_field": "当中止一个正在执行的任务时，应该使用哪种HTTP请求方法？"}
+{"id": "TEST1-12", "input_field": "AllocVertexSubset函数用来做什么？"}
+{"id": "TEST1-13", "input_field": "web端导入10G数据报错"}
+{"id": "TEST1-14", "input_field": "TuGraph支持的导出格式？"}
+{"id": "TEST1-15", "input_field": "TuGraph的调优，除了语句前加EXPLAIN和PROFILE还有没有别的方式"}
+{"id": "TEST1-16", "input_field": "RpcSingleClient 构造函数需要哪些参数？"}
+{"id": "TEST1-17", "input_field": "Cython是如何导入与Olap相关的模块和图数据库模块的？"}
+{"id": "TEST1-18", "input_field": "在调用db.addEdgeIndex时，'unique'参数和'pair_unique'参数有何不同？"}
+{"id": "TEST1-19", "input_field": "图数据库相比于关系型数据库有什么优势？"}
+{"id": "TEST1-20", "input_field": "在创建节点的时候，报错：message: Vertex unique index value [xxx] is too long，是属性值太长了吗？"}
+{"id": "TEST1-21", "input_field": "使用 GET 方法获取具体边属性时，如果边不存在该属性，会返回什么错误代码？"}
+{"id": "TEST1-22", "input_field": "TuGraph针对不同用户的需求提供了哪些类型的系统环境？"}
+{"id": "TEST1-23", "input_field": "TuGraph-DB新增支持的空间数据类型有哪些？"}
+{"id": "TEST1-24", "input_field": "在CREATE LABEL命令中，如果要创建一个顶点标签，主要属性名称应该由哪个参数确定？"}
+{"id": "TEST1-25", "input_field": "在HA模式下，client可以向谁发送导入点边数据请求？"}
+{"id": "TEST1-26", "input_field": "在只读事务中调用 SetFields 方法会抛出什么异常？"}
+{"id": "TEST1-27", "input_field": "GetVertexIndexIterator函数在liblgraph_python_api.Transaction中用于获取什么类型的迭代器？"}
+{"id": "TEST1-28", "input_field": "db.importor.dataImportor 函数在导入数据时是否可以指定错误继续执行和线程数？"}
+{"id": "TEST1-29", "input_field": "在尝试读取一个已完成索引构建的顶点时，应该使用哪个函数？"}
+{"id": "TEST1-30", "input_field": "在调用函数DeleteGraph时，如果操作未被授权会抛出什么异常？"}
+{"id": "TEST1-31", "input_field": "在初始化每个节点的pagerank值时，当节点的出度大于0，pagerank值是如何计算的？"}
+{"id": "TEST1-32", "input_field": "TuGraph 支持哪些数据导出格式？"}
+{"id": "TEST1-33", "input_field": "启动TuGraph的时候报这个错误：0x00007f7e5f272900 FATAL include/fma-common/binary_buffer.h:289] CHECK(gpos_ + size <= ppos_)      failedreading beyond the array: required size=4, actual size=2"}
+{"id": "TEST1-34", "input_field": "如果在FrontierTraversal中开启了TRAVERSAL_PARALLEL标志，事务必须是怎样的？"}
+{"id": "TEST1-35", "input_field": "使用 CSV 文件导入数据时，文件中的栏位与配置文件中的 columns 如何对应？"}
+{"id": "TEST1-36", "input_field": "在创建一个顶点标签时，需要指定哪些参数？"}
+{"id": "TEST1-37", "input_field": "TuGraph Browser 的默认端口号是什么？"}
+{"id": "TEST1-38", "input_field": "在配置中，用于计算图表中显示的值的方法是什么？"}
+{"id": "TEST1-39", "input_field": "TuGraph是由哪个团队开发的？"}
+{"id": "TEST1-40", "input_field": "图学习系统是解决什么问题的？"}
+{"id": "TEST1-41", "input_field": "VertexIterator GetVertexByUniqueCompositeIndex函数需要哪些参数？"}
+{"id": "TEST1-42", "input_field": "rpc port怎么配置？"}
+{"id": "TEST1-43", "input_field": "图数据库在处理关联关系时相比关系型数据库有什么优势？"}
+{"id": "TEST1-44", "input_field": "使用TuGraph Browser时，默认的登录密码是什么？"}
+{"id": "TEST1-45", "input_field": "SetFields函数的第一个版本中，field_value_strings参数的数据类型是什么？"}
+{"id": "TEST1-46", "input_field": "DB和tuGraph Analytics是独立运行吗？"}
+{"id": "TEST1-47", "input_field": "RpcClient 构造函数需要什么参数用于用户登录？"}
+{"id": "TEST1-48", "input_field": "如何使用lgraph_cypher工具在命令行中以单命令模式提交一条Cypher查询并保存结果？"}
+{"id": "TEST1-49", "input_field": "数据和日志目录的持久化位置在哪里？"}
+{"id": "TEST1-50", "input_field": "TuGraph 的 Traversal API 当中对于遍历的起始点设置有哪三种方式？"}
+{"id": "TEST1-51", "input_field": "方法 `SetField` 的目的是什么？"}
+{"id": "TEST1-52", "input_field": "TuGraph-DB图数据库是由哪个团队开发的？"}
+{"id": "TEST1-53", "input_field": "TuGraph 的精简运行环境需要哪些系统库？"}
+{"id": "TEST1-54", "input_field": "函数 SetFrontier(std::function<bool(VertexIterator&)> root_vertex_filter) 是如何利用参数 root_vertex_filter 的？"}
+{"id": "TEST1-55", "input_field": "rpm包中包含新版前端页面资源吗？"}
+{"id": "TEST1-56", "input_field": "请问一下镜像 tugraph-runtime-centos7启动大概需要多少资源"}
+{"id": "TEST1-57", "input_field": "当创建组合索引时，需要提供哪些参数？"}
+{"id": "TEST1-58", "input_field": "函数 `SetField` 抛出的异常之一是什么？"}
+{"id": "TEST1-59", "input_field": "TuGraphClient是什么？"}
+{"id": "TEST1-60", "input_field": "TuGraph 支持哪些类型的硬件平台？"}
+{"id": "TEST1-61", "input_field": "我想问一下字节流导入点边数据的api：boolean ret = client.importDataFromContent(personDesc, person, \",\", true, 16, \"default\", 1000);前两个参数的格式，是不是和执行导入脚本一样"}
+{"id": "TEST1-62", "input_field": "什么标签和属性用于表示OGM中类的映射为一个边类型？"}
+{"id": "TEST1-63", "input_field": "如果在对 DateTime 对象使用 operator+= 或 operator-= 运算时发生溢出，会如何处理？"}
+{"id": "TEST1-64", "input_field": "AlterEdgeLabelAddFields函数成功执行的条件是什么？"}
+{"id": "TEST1-65", "input_field": "带权图的边权重是什么类型的数值？"}
+{"id": "TEST1-66", "input_field": "RPC 是一种如何工作的通信协议？"}
+{"id": "TEST1-67", "input_field": "TuGraph中主键的作用是什么？"}
+{"id": "TEST1-68", "input_field": "RpcException是什么类型的异常？"}
+{"id": "TEST1-69", "input_field": "match语句中是否支持set多个属性"}
+{"id": "TEST1-70", "input_field": "TuGraph DB关于Antlr4改进了哪些性能方面的内容？"}
+{"id": "TEST1-71", "input_field": "TuGraph 和 OpenCypher 在处理节点和关系的标签数量上有什么不同？"}
+{"id": "TEST1-72", "input_field": "函数DeleteVertexIndex成功执行时返回什么值？"}
+{"id": "TEST1-73", "input_field": "现在tugraph-analytics是不支持窗口函数吗？"}
+{"id": "TEST1-74", "input_field": "当调用CallProcedure函数时，如果设置json_format参数为false，返回的结果格式是什么？"}
+{"id": "TEST1-75", "input_field": "在 PathTraversal 类中，通过调用哪个函数来通过传入的过滤器设置初始边界？"}
+{"id": "TEST1-76", "input_field": "GeaBase的主要部署方式需要多长时间？"}
+{"id": "TEST1-77", "input_field": "在图论中，图的基本元素包括哪些？"}
+{"id": "TEST1-78", "input_field": "TuGraph支持哪些编程语言？"}
+{"id": "TEST1-79", "input_field": "在这段代码中，如何获取存储过程响应的列表？"}
+{"id": "TEST1-80", "input_field": "什么是RPC接口？"}
+{"id": "TEST1-81", "input_field": "在文本中，The Matrix参与了哪几种类型的关系？"}
+{"id": "TEST1-82", "input_field": "使用什么命令启动 TuGraph 服务器？"}
+{"id": "TEST1-83", "input_field": "如果在添加顶点时存在相同的unique_id，将会发生什么？"}
+{"id": "TEST1-84", "input_field": "TuGraph 支持哪些硬件架构？"}
+{"id": "TEST1-85", "input_field": "TuGraph-OGM项目如何面向TuGraph数据库支持JAVA开发人员进行图对象映射？"}
+{"id": "TEST1-86", "input_field": "OPTIONAL MATCH在GQL中有什么作用？"}
+{"id": "TEST1-87", "input_field": "loadProcedure方法中，如何通过参数控制存储过程是否为只读？"}
+{"id": "TEST1-88", "input_field": "在RPC调用中，如果回应的错误码不是成功，则抛出的异常类型是什么？"}
+{"id": "TEST1-89", "input_field": "Transform操作中的swap_id函数是用来做什么的？"}
+{"id": "TEST1-90", "input_field": "在影视场景Demo中，如何通过Cypher语言查询影片'Forrest Gump'的所有演员以及他们扮演的角色？"}
+{"id": "TEST1-91", "input_field": "TuGraph-DB图数据库社区版内置了多少种基础算法？"}
+{"id": "TEST1-92", "input_field": "TuGraph-DB支持的三种空间数据类型是什么？"}
+{"id": "TEST1-93", "input_field": "产品是否支持麒麟操作系统？只有企业版支持么？"}
+{"id": "TEST1-94", "input_field": "TuGraph-DB中存储Point类型数据的格式是什么？"}
+{"id": "TEST1-95", "input_field": "TuGraph嵌入模式的API允许用户执行哪些操作？"}
+{"id": "TEST1-96", "input_field": "Date 类的默认构造函数设置的日期是什么？"}
+{"id": "TEST1-97", "input_field": "在使用 bool DeleteVertexIndex 函数时，如果给定的 vertex_label 或 field 不存在会发生什么？"}
+{"id": "TEST1-98", "input_field": "在单命令模式下，如何使用 lgraph_cypher 通过命令行参数来执行一条 Cypher 查询并将结果显示为表格格式？"}
+{"id": "TEST1-99", "input_field": "reduce_plus函数是如何处理它的两个参数的？"}
+{"id": "TEST1-100", "input_field": "是否支持无向边"}
+{"id": "TEST1-101", "input_field": "FieldData类中提供哪些构造函数来初始化不同类型的数据？"}
+{"id": "TEST1-102", "input_field": "TuGraph-DB是如何帮助解决旅行时选择路线的烦恼的？"}
+{"id": "TEST1-103", "input_field": "exists()函数用于检查什么？"}
+{"id": "TEST1-104", "input_field": "安装部署TuGraph硬件的最低和建议CPU配置分别是多少个核心？"}
+{"id": "TEST1-105", "input_field": "MappedVid 函数是用于什么目的？"}
+{"id": "TEST1-106", "input_field": "当尝试更新一个存在的边但标签与指定的不符时，会发生什么？"}
+{"id": "TEST1-107", "input_field": "批量在线导入是通过”CREATE (n), (m)“吗？"}
+{"id": "TEST1-108", "input_field": "lgraph_backup工具的主要功能是什么？"}
+{"id": "TEST1-109", "input_field": "在获取某个节点的所有属性时，通过什么方法和URI可以实现？"}
+{"id": "TEST1-110", "input_field": "知识图谱的基本元素包括哪些？"}
+{"id": "TEST1-111", "input_field": "TuGraph-DB是否支持存储过程？支持哪些编程语言的存储过程？"}
+{"id": "TEST1-112", "input_field": "GetEdgeProp操作的目的是什么？"}
+{"id": "TEST1-113", "input_field": "TuGraph-DB的主要功能是什么？"}
+{"id": "TEST1-114", "input_field": "当Cypher请求的响应不包含正确的结果时，会抛出什么异常？"}
+{"id": "TEST1-115", "input_field": "2024年度功能更新预计何时推出HA支持Witness角色和管理工具？"}
+{"id": "TEST1-116", "input_field": "TuGraph-DB使用CMake作为编译工具，支持的C++标准为C++17"}
+{"id": "TEST1-117", "input_field": "Cython.cimports.libcpp.unordered_map是什么？"}
+{"id": "TEST1-118", "input_field": "TuGraph 数据预热命令需要指定哪两个选项？"}
+{"id": "TEST1-119", "input_field": "是否支持GQL语句？"}
+{"id": "TEST1-120", "input_field": "在配置中提到的“log4j-core”和“guava”的版本号分别是多少？"}
+{"id": "TEST1-121", "input_field": "类liblgraph_python_api.Galaxy的方法SetUserGraphAccess主要用于什么？"}
+{"id": "TEST1-122", "input_field": "TuGraph-DB如何在运行单元测试的过程中输出日志？"}
+{"id": "TEST1-123", "input_field": "GeaBase 查询中使用 \"Nav\" 语句的一种情况是什么?"}
+{"id": "TEST1-124", "input_field": "我要快速定位到2个顶点间的某条关系边，通过pair unique索引查找关系边的接口有么，需求是根据pair_unique的值更新对应的边数据么"}
+{"id": "TEST1-125", "input_field": "TuGraph Explorer 的功能现在在哪里可以找到？"}
+{"id": "TEST1-126", "input_field": "SybilRank算法的执行过程中主要采用什么方式来进行计算？"}
+{"id": "TEST1-127", "input_field": "节点和边的属性在知识图谱中有什么作用？"}
+{"id": "TEST1-128", "input_field": "在TuGraph项目中，为什么在提交代码前要先提交一个issue？"}
+{"id": "TEST1-129", "input_field": "请问社区版本和企业版本，之间的差距在哪"}
+{"id": "TEST1-130", "input_field": "bfs_standalone程序的输出结果是什么？"}
+{"id": "TEST1-131", "input_field": "Key_start和key_end相等于v时，VertexIndexIterator是如何工作的？"}
+{"id": "TEST1-132", "input_field": "应该如何写入图数据库中的顶点数据？"}
+{"id": "TEST1-133", "input_field": "lgraph_api::Transaction的作用是什么？"}
+{"id": "TEST1-134", "input_field": "在执行`ProcessVertexActive`函数时，如果运行时出现错误，会引发什么异常？"}
+{"id": "TEST1-135", "input_field": "如果在调用存储过程时，指定json_format参数为false，返回结果的格式是什么？"}
+{"id": "TEST1-136", "input_field": "Prometheus的地址是什么？"}
+{"id": "TEST1-137", "input_field": "TuGraph图分析引擎主要面向哪类任务？"}
+{"id": "TEST1-138", "input_field": "在给定的XML配置中，如果表内属性字段名为id时，应该如何处理node_id字段以避免报错？"}
+{"id": "TEST1-139", "input_field": "使用OGM进行创建节点和边的代码示例中，哪部分代码用于创建边标签\"DIRECT\"?"}
+{"id": "TEST1-140", "input_field": "return n 和 return p.name,p.age 的数据结构不一致。 能统一返回可视化页面的这种结构么？"}
+{"id": "TEST1-141", "input_field": "编译TuGraph时如何为基于ARM的机器（如Mac M1）配置CMake？"}
+{"id": "TEST1-142", "input_field": "单机的配置大致是什么情况？"}
+{"id": "TEST1-143", "input_field": "如何查询两点间的一条通路？"}
+{"id": "TEST1-144", "input_field": "tugraph 支持通过cypher 或者python的形式修改schema吗"}
+{"id": "TEST1-145", "input_field": "TuGraph-Restful-Server 使用哪种框架支持其HTTP协议，并提供了哪些主要功能？"}
+{"id": "TEST1-146", "input_field": "禁用角色后，具有该角色的用户会如何受影响？"}
+{"id": "TEST1-147", "input_field": "如果您作为公司员工提交贡献内容，应如何保证合法授权？"}
+{"id": "TEST1-148", "input_field": "如何只清空数据，而保留schema？"}
+{"id": "TEST1-149", "input_field": "OGM在哪些方面类似于MyBatis？"}
+{"id": "TEST1-150", "input_field": "BROWSER 有 docker 部署么？"}
+{"id": "TEST1-151", "input_field": "TuGraph-DB是否有数据导入工具？相关代码在哪里？"}
+{"id": "TEST1-152", "input_field": "图数据库相比关系型数据库有哪些独特的优势？"}
+{"id": "TEST1-153", "input_field": "TuGraph 产品架构中，客户端 SDK 支持哪些编程语言？"}
+{"id": "TEST1-154", "input_field": "OGC定义了哪些空间数据的标准表示格式？"}
+{"id": "TEST1-155", "input_field": "db.importor.dataImportor函数的目的是什么？"}
+{"id": "TEST1-156", "input_field": "TuGraph企业版是什么？"}
+{"id": "TEST1-157", "input_field": "请求存储过程列表时，应该使用哪种HTTP方法和URI？"}
+{"id": "TEST1-158", "input_field": "TuGraph基础算法包包含哪些算法？"}
+{"id": "TEST1-159", "input_field": "REST 服务器的默认端口号是多少？"}
+{"id": "TEST1-160", "input_field": "如果需要对一个角色进行禁用，调用何种函数，并且该函数在何种情况下返回true？"}
+{"id": "TEST1-161", "input_field": "TuGraph更新之后，原库的数据会丢吗？"}
+{"id": "TEST1-162", "input_field": "如果节点中未包含属性\"belt\"，应该返回什么值？"}
+{"id": "TEST1-163", "input_field": "磁盘IO警报是在什么情况下触发的？"}
+{"id": "TEST1-164", "input_field": "调用 Close() 函数后 InEdgeIterator 的状态是怎样的？"}
+{"id": "TEST1-165", "input_field": "DUAL_DIRECTION表示什么？"}
+{"id": "TEST1-166", "input_field": "当指定的顶点ID不存在，并且nearest参数为true时，Goto函数将如何处理？"}
+{"id": "TEST1-167", "input_field": "在BFS算法中，最终返回的结果是什么？"}
+{"id": "TEST1-168", "input_field": "TuGraph“refresh_time”的默认设置是什么？"}
+{"id": "TEST1-169", "input_field": "GetEdgeProp命令中，如果要查找特定的时间戳的边属性，该如何指定timestamp字段？"}
+{"id": "TEST1-170", "input_field": "使用TuGraph Browser时，默认的端口号是多少？"}
+{"id": "TEST1-171", "input_field": "TuGraph-DB是否支持运行图算法？是否有示例图算法可以参考？"}
+{"id": "TEST1-172", "input_field": "Python存储过程接口包含哪些重要组件和功能？"}
+{"id": "TEST1-173", "input_field": "当执行 CallGql 函数时，如果操作成功和失败分别返回什么？"}
+{"id": "TEST1-174", "input_field": "TuGraph 中复杂图分析操作如何执行？"}
+{"id": "TEST1-175", "input_field": "filter_output_default函数的主要作用是什么？"}
+{"id": "TEST1-176", "input_field": "在Java运行时，MyBatis Generator的XML配置文件应如何配置targetProject？"}
+{"id": "TEST1-177", "input_field": "在给定的代码中，`@Property(\"class\")`注解指定了什么数据库字段名？"}
+{"id": "TEST1-178", "input_field": "在tugraph中是否能通过cypher语句删除图中的重复关系？"}
+{"id": "TEST1-179", "input_field": "在默认情况下，第一次快照的时间如何设置？"}
+{"id": "TEST1-180", "input_field": "如果您想提交非原创作品给蚂蚁集团，您需要标注哪些信息？"}
+{"id": "TEST1-181", "input_field": "web端导入点数据后，不同的方式查询得到结果不同"}
+{"id": "TEST1-182", "input_field": "对象图映射（OGM）支持什么？"}
+{"id": "TEST1-183", "input_field": "如何在单节点模式下实例化liblgraph_client_python.client对象？"}
+{"id": "TEST1-184", "input_field": "如果传递给 `GetRoleInfo` 函数的角色名非法，会抛出哪种异常？"}
+{"id": "TEST1-185", "input_field": "TuGraph 的部署方式有哪些？"}
+{"id": "TEST1-186", "input_field": "根据使用MATCH和SKIP语句的查询结果，跳过第一行后返回的第一位人物的名字是什么？"}
+{"id": "TEST1-187", "input_field": "导入数据时，如果操作失败，是否可以继续导入？"}
+{"id": "TEST1-188", "input_field": "如果不定义表头并使用空的Result()初始化表，你接下来应该使用什么方法为表设置表头？"}
+{"id": "TEST1-189", "input_field": "蚂蚁集团的个人贡献者许可协议主要目的是什么？"}
+{"id": "TEST1-190", "input_field": "TuGraph Mini Runtime Image 不包含哪些功能？"}
+{"id": "TEST1-191", "input_field": "OlapOnDB API文档中介绍的Procedure及Embed主要使用了哪些辅助函数？"}
+{"id": "TEST1-192", "input_field": "在尝试为用户设置新密码时，哪些异常可能会被抛出？"}
+{"id": "TEST1-193", "input_field": "如何使用 liblgraph_python_api.Galaxy 类创建一个新的用户账户？"}
+{"id": "TEST1-194", "input_field": "调用liblgraph_python_api.GraphDB的哪个方法可以删除一个顶点标签？"}
+{"id": "TEST1-195", "input_field": "角色被禁用后，用户将从该角色中获得什么权限？"}
+{"id": "TEST1-196", "input_field": "TuGraph的可视化监控主要使用了哪些软件？"}
+{"id": "TEST1-197", "input_field": "TuGraph 服务在哪个文件中读取其配置？"}
+{"id": "TEST1-198", "input_field": "该接口`StudentMapper`中`selectVertex`方法的超时设置是多少毫秒？"}
+{"id": "TEST1-199", "input_field": "PathTraversal 类中展开当前前沿的操作可以使用哪些类型的过滤函数？"}
+{"id": "TEST1-200", "input_field": "当在只读交易中调用函数时，会抛出哪种异常？"}
+{"id": "TEST1-201", "input_field": "UDF的支持中，如果开发的函数的语言是Python，模块通常放在什么位置？"}
+{"id": "TEST1-202", "input_field": "在文本中，哪种资源名称对应的颜色设置为固定的“light-orange”？"}
+{"id": "TEST1-203", "input_field": "导入图库的数据如何删除"}
+{"id": "TEST1-204", "input_field": "当使用 TuGraph 批量创建边时，如果请求成功，响应中将返回什么内容？"}
+{"id": "TEST1-205", "input_field": "TuGraph为什么选择使用B+树作为其底层存储数据结构？"}
+{"id": "TEST1-206", "input_field": "接口 \"CallProcedureToLeader\" 支持哪些参数设置以改变返回结果的格式？"}
+{"id": "TEST1-207", "input_field": "如何提高查询效率？"}
+{"id": "TEST1-208", "input_field": "FieldData 类中的 integer() 方法在什么情况下会抛出 std::bad_cast 异常？"}
+{"id": "TEST1-209", "input_field": "TuGraph-DB的存储引擎用了kv数据库么？如果是，基于什么kv数据库构建的？"}
+{"id": "TEST1-210", "input_field": "请问下怎么没找到新版的browser-resource，怎么进行新旧版本的web切换呢"}
+{"id": "TEST1-211", "input_field": "tugraph进行大规模数据查询时是否对图数据进行了压缩？"}
+{"id": "TEST1-212", "input_field": "TuGraph选择使用哪一种树结构作为其存储数据结构，并简述选择这种结构的主要原因是什么？"}
+{"id": "TEST1-213", "input_field": "TuGraph-DB使用的boost库是什么版本？"}
+{"id": "TEST1-214", "input_field": "TuGraph适合哪些类型的用户？"}
+{"id": "TEST1-215", "input_field": "TuGraph的REST API中，POST请求主要用途是什么？"}
+{"id": "TEST1-216", "input_field": "安装部署TuGraph外存配置的最低和建议分别是多少？"}
+{"id": "TEST1-217", "input_field": "在创建一个TuGraph数据库时，如果指定的目录不存在，构造函数会如何处理？"}
+{"id": "TEST1-218", "input_field": "VertexIterator 的 GetNumOutEdges 方法默认的 n_limit 参数值是多少？"}
+{"id": "TEST1-219", "input_field": "试图加入高可用集群时节点的默认等待秒数是多少？"}
+{"id": "TEST1-220", "input_field": "生成Mapper接口的时候，XMLMAPPER类型将如何实现接口方法？"}
+{"id": "TEST1-221", "input_field": "GCN模型的主要组成部分是什么？"}
+{"id": "TEST1-222", "input_field": "TuGraph-DB的单元测试使用的是什么框架？"}
+{"id": "TEST1-223", "input_field": "tugraph-db可以先用cypher找一个子图，然后在这个子图上跑图分析吗？例如pagerank、kcore什么的！"}
+{"id": "TEST1-224", "input_field": "HA集群的snapshot何时删除？"}
+{"id": "TEST1-225", "input_field": "TuGraph-DB目前支持哪种查询语言，并计划在将来支持哪种查询语言？"}
+{"id": "TEST1-226", "input_field": "语句里面有没有开启事务和结束事务的关键字"}
+{"id": "TEST1-227", "input_field": "如何使用命令创建一个新的角色，并为其提供描述信息？"}
+{"id": "TEST1-228", "input_field": "TuGraph查询语句不支持任意长度路径吧？"}
+{"id": "TEST1-229", "input_field": "如果在Java运行时，targetProject在xml配置文件中应如何配置？"}
+{"id": "TEST1-230", "input_field": "2024年功能更新计划中支持什么角色和工具？"}
+{"id": "TEST1-231", "input_field": "调用 \"CallGql\" 接口时，如何指定要查询的图的名称？"}
+{"id": "TEST1-232", "input_field": "图中能把属性值展示出来吗？"}
+{"id": "TEST1-233", "input_field": "tugraph-db如何与neo4j驱动连接？"}
+{"id": "TEST1-234", "input_field": "图模型中某些边设置了属性，这些有属性的边在导入数据之后进行查询，发现查不到这些边数据"}
+{"id": "TEST1-235", "input_field": "在\"TuGraph-DataX\"项目中如何通过job配置文件将\"actors.csv\"导入到TuGraph？"}
+{"id": "TEST1-236", "input_field": "创建新子图时需要哪些参数？"}
+{"id": "TEST1-237", "input_field": "在test_export_default函数中，如何验证导出后再次导入的数据是否与原始数据一致？"}
+{"id": "TEST1-238", "input_field": "Work函数在处理节点vi时，返回值代表什么？"}
+{"id": "TEST1-239", "input_field": "TuGraph Explorer 的功能现在在哪里可以找到？"}
+{"id": "TEST1-240", "input_field": "在批量创建点的操作中，如果请求成功，TuGraph 会返回什么？"}
+{"id": "TEST1-241", "input_field": "tugraph能否支持混合检索 vector+知识图谱？"}
+{"id": "TEST1-242", "input_field": "TuGraph 数据预热的主要目的是什么？"}
+{"id": "TEST1-243", "input_field": "InEdgeIterator 类的 GetSrc 方法返回什么信息？"}
+{"id": "TEST1-244", "input_field": "可选匹配子句OPTIONAL MATCH在查询中有什么作用？"}
+{"id": "TEST1-245", "input_field": "GraphDB 实例无法使用的情况是什么？"}
+{"id": "TEST1-246", "input_field": "TuGraph 运行需要保证哪个库文件的位置在环境变量 LD_LIBRARY_PATH 中？"}
+{"id": "TEST1-247", "input_field": "GetNumOutEdges函数如何在达到限制时响应？"}
+{"id": "TEST1-248", "input_field": "文本中的 BFS 算法在每次迭代中怎样更新活跃顶点数量？"}
+{"id": "TEST1-249", "input_field": "角色名的允许的最大长度是多少字节？"}
+{"id": "TEST1-250", "input_field": "URIs 用于修改和启用角色的 HTTP 方法是什么？"}
