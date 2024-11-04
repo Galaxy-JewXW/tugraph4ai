@@ -99,7 +99,7 @@ def _answer_problem(problem_file, result_file):
             result = rag.invoke(question)
             results.append({"id": data["id"], "output_field": result["answer"]})
 
-            print(f"[answer]: {question}: {result["answer"]}")
+            print(f"[answer]: {question}: {result['answer']}")
 
     # 将提取的数据写入到answer.jsonl文件中
     with open(result_file, "w", encoding="utf-8") as f:
