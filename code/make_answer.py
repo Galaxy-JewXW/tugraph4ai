@@ -1,5 +1,7 @@
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.vectorstores import FAISS
+from langchain_community.retrievers.bm25 import BM25Retriever
+from langchain.retrievers import EnsembleRetriever
 from langchain_openai import ChatOpenAI
 from FlagEmbedding import FlagReranker
 import pandas as pd
@@ -9,6 +11,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables import RunnableParallel
 from langchain.retrievers import ContextualCompressionRetriever
 import json
+import jieba
 
 from setting import *
 
@@ -52,7 +55,16 @@ def _get_embedding_retriever():
         allow_dangerous_deserialization=True,
     )
     retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
-    return retriever
+    
+    bm25_retriever = BM25Retriever.from_documents(
+        docs, 
+        k=5, 
+        bm25_params={"k1": 1.5, "b": 0.75}, 
+        preprocess_func=jieba.lcut
+    )
+    ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, retriever], weights=[0.4, 0.6])
+    
+    return ensemble_retriever
 
 
 def _get_rag():
@@ -111,8 +123,8 @@ def _answer_problem(problem_file, result_file):
 
 
 def answer_question():
-    _answer_problem("data/val.jsonl", "result/val_ans.jsonl")
-    _answer_problem("data/test1.jsonl", "result/answer.jsonl")
+    _answer_problem("data/test1.jsonl", "result/test_ans.jsonl")
+    _answer_problem("data/val.jsonl", "result/answer.jsonl")
 
 
 if __name__ == "__main__":
