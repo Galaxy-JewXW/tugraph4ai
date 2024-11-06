@@ -15,12 +15,19 @@ from langchain.retrievers import ContextualCompressionRetriever
 from langchain_community.document_transformers import LongContextReorder
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+import jieba
+
+from make_embedding import get_docs
+from setting import *
 
 class RAG:
-    def __init__(self, retriver, llm):
-        self.retriver = retriver
-        self.llm = llm
-        self.memory = []
+    def __init__(self):
+        self.retriver = _get_embedding_retriever()
+        self.llm = _get_llm()
+
+        self.tokenizer = AutoTokenizer.from_pretrained(RERANKER_MODEL_NAME)
+        self.model = AutoModelForSequenceClassification.from_pretrained(RERANKER_MODEL_NAME)
+        self.model.eval()
 
     def _rewrite_question(self, question):
         prompt_template = """
@@ -34,11 +41,7 @@ class RAG:
         prompt = ChatPromptTemplate.from_template(prompt_template)
 
         llm_chain = prompt | self.llm
-        # 如果是Qwen改为"content"，否则为"question"
-        # 注意一起修改上面的prompt
         rewrite = llm_chain.invoke({"question": question}).content
-        # qwen后面不需要.content
-        # rewrite = llm_chain.invoke({"content": question})
 
         print(f"[rewrite: ] \n\tinit is {question} \n\tnow is {rewrite}\n")
         return rewrite
@@ -51,14 +54,10 @@ class RAG:
         docs = self.retriver.invoke(question)
 
         # 重排
-        tokenizer = AutoTokenizer.from_pretrained(self.config.rerank_model)
-        model = AutoModelForSequenceClassification.from_pretrained(self.config.rerank_model)
-        model.eval()
-
         pairs = [[question, doc.page_content] for doc in docs]
         with torch.no_grad():
-            inputs = tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=512)
-            scores = model(**inputs, return_dict=True).logits.view(-1, ).float()
+            inputs = self.tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=512)
+            scores = self.model(**inputs, return_dict=True).logits.view(-1, ).float()
         # 确保scores是一维的
         scores = scores.squeeze()
         # 将docs和scores组合成一个列表
@@ -76,34 +75,81 @@ class RAG:
     def search(self, question):
         context = self.get_context(question)
 
-        PROMPT_TEMPLATE = """以下是历史聊天记录:
-        {chat_history}
-        ---
-        以下是参考信息：
+        PROMPT_TEMPLATE = """
+        As a specialized AI assistant for question-answering, I will use the given context to provide a clear and concise response to your query in no more than three sentences, without adding any LLM-specific filler words such as '好的' or '从资料中可以得出'. If the necessary information is not available, I will let you know.
+        Context: 
         {context}
         ---
-        以下是我当前的问题：
+        Question:
         {question}
         ---
-        请根据上述聊天记录和参考信息回答我当前的问题。前面的聊天记录和参考信息可能有用，也可能没用，你需要从我给出的参考信息中选出与我的问题最相关的那些，来为你的回答提供依据。回答一定要忠于原文，简洁但不丢信息，不要胡乱编造。请给出回答。"""
+        Here is your answer:
+        """
 
         prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 
         chat_llm_chain = LLMChain(
             llm=self.llm,
             prompt=prompt,
-            verbose=True,
         )
 
         # 生成回复
         res = chat_llm_chain.predict(
-            # 格式化聊天记录为JSON字符串
-            chat_history = "\n".join([f"{entry['role']}: {entry['content']}" for entry in self.memory]),
-            # chat_history = "\n".join(self.memory),
             context=context,
             question=question
         )
 
-        # 更新聊天历史
-        self.memory.append({'role': 'user', 'content': question})
-        self.memory.append({'role': 'assistant', 'content': res})
+        return res
+
+def _get_embedding_model():
+    model_name = EMBEDDING_MODEL_NAME
+    model_kwargs = {"device": "cuda"}
+    # 对嵌入向量进行归一化处理
+    encode_kwargs = {"normalize_embeddings": True}
+    # 创建了一个用于生成句子嵌入的实例，用于数据库检索
+    embedding_model = HuggingFaceBgeEmbeddings(
+        model_name=model_name,
+        model_kwargs=model_kwargs,
+        encode_kwargs=encode_kwargs,
+        query_instruction="为这个句子生成表示以用于检索相关文章:",
+    )
+    return embedding_model
+
+# 获取检索器
+def _get_embedding_retriever():
+    embedding_model = _get_embedding_model()
+
+    # 用于重排检索结果的实例
+    # reranker = _get_reranker()
+
+    # 用于存储和检索文档的嵌入向量
+    db = FAISS.load_local(
+        f"data/{EMBEDDING_DB_NAME}",
+        embedding_model,
+        allow_dangerous_deserialization=True,
+    )
+    retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
+
+    # 如果不需要混合分词，则取消注释
+    # return retriever
+
+    # 重新生成docs耗时过久
+    docs = get_docs()
+    bm25_retriever = BM25Retriever.from_documents(
+        docs,
+        k=SEARCH_NUM,
+        bm25_params={"k1": 1.5, "b": 0.75},
+        preprocess_func=jieba.lcut  # 中文需要使用jieba分词
+    )
+    ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, retriever], weights=[0.4, 0.6])
+
+    return ensemble_retriever
+
+def _get_llm() :
+    from llm.ChatOpenAI import get_ChatOpenAI
+    llm = get_ChatOpenAI()
+
+    # from llm.Qwen import get_Qwen_local
+    # llm = get_Qwen_local()
+
+    return llm
