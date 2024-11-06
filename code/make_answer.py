@@ -75,13 +75,14 @@ def _get_embedding_retriever():
     ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, retriever], weights=[0.4, 0.6])
 
     return ensemble_retriever
-  
+
 def _get_llm() :
     from llm.ChatOpenAI import get_ChatOpenAI
-    # from llm.Qwen import get_Qwen_local
-
-    # llm = get_Qwen_local()
     llm = get_ChatOpenAI()
+
+    # from llm.Qwen import get_Qwen_local
+    # llm = get_Qwen_local()
+
     return llm
 
 def _get_rag():
@@ -102,7 +103,7 @@ def _get_rag():
     )
 
     rag_chain_with_source = RunnableParallel({
-        "context": retriever, 
+        "context": retriever,
         "question": RunnablePassthrough()
     }).assign(answer=rag_chain_from_docs)
 
@@ -122,8 +123,13 @@ def _rewrite_question(question):
     llm = _get_llm()
 
     llm_chain = prompt | llm
+    # 如果是Qwen改为"content"，否则为"question"
+    # 注意一起修改上面的prompt
     rewrite = llm_chain.invoke({"question": question}).content
+    # qwen后面不需要.content
+    # rewrite = llm_chain.invoke({"content": question})
 
+    print(f"[rewrite: ] \n\tinit is {question} \n\tnow is {rewrite}\n")
     return rewrite
 
 def _answer_problem(problem_file, result_file):
@@ -133,12 +139,13 @@ def _answer_problem(problem_file, result_file):
     with open(problem_file, "r") as file:
         for line in file:
             data = json.loads(line)
-            question = data["input_field"]
-            rewrite_question = _rewrite_question(question)
-            print(f"[rewrite: ] \n\tinit is {question} \n\tnow is {rewrite_question}\n")
-            
+            question = _rewrite_question(data["input_field"])
+
             result = rag.invoke(question)
-            results.append({"id": data["id"], "output_field": result["answer"]})
+            results.append({
+                "id": data["id"],
+                "output_field": result["answer"]
+            })
 
             print(f"[answer]: \n\tinit is: {question}: \n\tanswer is: {result['answer']}")
             print("##################################")

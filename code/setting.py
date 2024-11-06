@@ -21,4 +21,5 @@ LLM_API_KEY = "3138eb04ab176ee38855bc7bd5883868.RZfclCazuZkKXA1f"
 
 # Qwen选取的模型型号
 QWEN_NAME = "qwen/Qwen1.5-7B-Chat"
+QWEN_ADDR = "/root/workshop/model/Qwen1.5-7B-Chat"
 QWEN25_NAME = "qwen/Qwen2.5-7B"

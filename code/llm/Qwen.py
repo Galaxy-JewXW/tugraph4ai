@@ -48,5 +48,5 @@ class Qwen(LLM):
         return "Qwen2_LLM"
 
 def get_Qwen_local():
-    llm = Qwen(mode_name_or_path = QWEN_NAME)
+    llm = Qwen(mode_name_or_path = QWEN_ADDR)
     return llm
