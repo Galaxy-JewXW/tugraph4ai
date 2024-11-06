@@ -1,7 +1,11 @@
+import os
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers.bm25 import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
+from langchain.prompts import ChatPromptTemplate
+from langchain.chains import LLMChain
 from langchain_openai import ChatOpenAI
 from FlagEmbedding import FlagReranker
 import pandas as pd
@@ -14,10 +18,11 @@ import json
 import jieba
 
 from setting import *
+from make_embedding import get_docs
 
 
 def _format_docs(docs):
-    return "".join(doc.page_content for doc in docs)
+    return "\n".join(doc.page_content for doc in docs)
 
 
 def _get_embedding_model():
@@ -55,17 +60,29 @@ def _get_embedding_retriever():
         allow_dangerous_deserialization=True,
     )
     retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
-    
+
+    # 如果不需要混合分词，则取消注释
+    return retriever
+
+    # 重新生成docs耗时过久
+    docs = get_docs()
     bm25_retriever = BM25Retriever.from_documents(
-        docs, 
-        k=5, 
-        bm25_params={"k1": 1.5, "b": 0.75}, 
-        preprocess_func=jieba.lcut
+        docs,
+        k=SEARCH_NUM,
+        bm25_params={"k1": 1.5, "b": 0.75},
+        preprocess_func=jieba.lcut  # 中文需要使用jieba分词
     )
     ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, retriever], weights=[0.4, 0.6])
-    
-    return ensemble_retriever
 
+    return ensemble_retriever
+  
+def _get_llm() :
+    from llm.ChatOpenAI import get_ChatOpenAI
+    # from llm.Qwen import get_Qwen_local
+
+    # llm = get_Qwen_local()
+    llm = get_ChatOpenAI()
+    return llm
 
 def _get_rag():
     # 获取检索器
@@ -73,12 +90,8 @@ def _get_rag():
     # 加载了一个提示模板
     prompt = hub.pull("rlm/rag-prompt")
     # 加载LLM
-    llm = ChatOpenAI(
-        model_name=LLM_MODEL_NAME,
-        openai_api_base=LLM_API_BASE,
-        openai_api_key=LLM_API_KEY,
-        streaming=False,
-    )
+
+    llm = _get_llm()
 
     # 从文档中查找答案
     rag_chain_from_docs = (
@@ -88,12 +101,30 @@ def _get_rag():
         | StrOutputParser()
     )
 
-    rag_chain_with_source = RunnableParallel(
-        {"context": retriever, "question": RunnablePassthrough()}
-    ).assign(answer=rag_chain_from_docs)
+    rag_chain_with_source = RunnableParallel({
+        "context": retriever, 
+        "question": RunnablePassthrough()
+    }).assign(answer=rag_chain_from_docs)
 
     return rag_chain_with_source
 
+# 传入原始的question，进行改写，使得更加规划
+def _rewrite_question(question):
+    prompt_template = """
+        现在我需要问你关于TuGraph-DB问题：
+        {question}
+        ---
+        原始的问题可能是简略的、口语化的、不完整的。
+        请根据下列指示改写我的问题：将原始问题转换为更加明确、简洁，并针对性强的形式，以便于在数据库或搜索引擎中进行有效检索。
+        请直接给出改写后的问题。
+        """
+    prompt = ChatPromptTemplate.from_template(prompt_template)
+    llm = _get_llm()
+
+    llm_chain = prompt | llm
+    rewrite = llm_chain.invoke({"question": question}).content
+
+    return rewrite
 
 def _answer_problem(problem_file, result_file):
     rag = _get_rag()
@@ -103,15 +134,14 @@ def _answer_problem(problem_file, result_file):
         for line in file:
             data = json.loads(line)
             question = data["input_field"]
-            # prompt = (
-            #     "以下问题只关于TuGraph-DB\n"
-            #     + question
-            #     + "\n要求：直接回答结果，如果不知道回答不知道，不要添加额外内容，不要进行推测。回答长度不要超过100字。"
-            # )
+            rewrite_question = _rewrite_question(question)
+            print(f"[rewrite: ] \n\tinit is {question} \n\tnow is {rewrite_question}\n")
+            
             result = rag.invoke(question)
             results.append({"id": data["id"], "output_field": result["answer"]})
 
-            print(f"[answer]: {question}: {result['answer']}")
+            print(f"[answer]: \n\tinit is: {question}: \n\tanswer is: {result['answer']}")
+            print("##################################")
 
     # 将提取的数据写入到answer.jsonl文件中
     with open(result_file, "w", encoding="utf-8") as f:
@@ -123,8 +153,8 @@ def _answer_problem(problem_file, result_file):
 
 
 def answer_question():
-    _answer_problem("data/test1.jsonl", "result/test_ans.jsonl")
-    _answer_problem("data/val.jsonl", "result/answer.jsonl")
+    _answer_problem("data/test1.jsonl", "result/answer.jsonl")
+    _answer_problem("data/val.jsonl", "result/test_ans.jsonl")
 
 
 if __name__ == "__main__":

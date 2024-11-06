@@ -4,5 +4,5 @@ from make_answer import answer_question
 
 if __name__ == "__main__":
     # crawl_all_urls()
-    make_embedding_db()
+    # make_embedding_db()
     answer_question()

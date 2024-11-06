@@ -18,3 +18,7 @@ RERANKER_MODEL_NAME = "BAAI/bge-reranker-large"
 LLM_MODEL_NAME = "GLM-4-PLus"
 LLM_API_BASE = "https://open.bigmodel.cn/api/paas/v4"
 LLM_API_KEY = "3138eb04ab176ee38855bc7bd5883868.RZfclCazuZkKXA1f"
+
+# Qwen选取的模型型号
+QWEN_NAME = "qwen/Qwen1.5-7B-Chat"
+QWEN25_NAME = "qwen/Qwen2.5-7B"

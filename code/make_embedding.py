@@ -37,12 +37,11 @@ def _get_crawl_urls(filename=None) -> dict:
 
     return all_links
 
-
 def _get_contents(urls):
     loader = WebBaseLoader(urls)
     documents = loader.load()
 
-    separators = ["\n\n", "\n", "。", "\r\n"]  # 定义分割符
+    separators = ["\n\n",  "\n",   " ",    ".",    ",",     "，",  "。", ]  # 定义分割符
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
         chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数
@@ -52,26 +51,36 @@ def _get_contents(urls):
     documents = text_splitter.split_documents(documents)
     return documents
 
+def get_docs():
+    crawl_file = "data/successful_urls.txt"
+    urls = _get_crawl_urls(crawl_file)
+    documents = _get_contents(urls)
+    return documents
 
 def _get_embedding_model():
     model_name = EMBEDDING_MODEL_NAME
     model_kwargs = {"device": "cuda"}
+    # 当向量都被规范化（归一化）后，它们的范数都是1。
+    # 余弦相似度的计算只需要向量的点积运算，从而减少了计算的复杂度，加快了处理速度。
     encode_kwargs = {"normalize_embeddings": True}
     embedding = HuggingFaceBgeEmbeddings(
         model_name=model_name,
         model_kwargs=model_kwargs,
         encode_kwargs=encode_kwargs,
-        query_instruction="为这个句子生成表示以用于检索相关文章:",
+        query_instruction="为这个句子生成表示以用于检索相关文章："
     )
     return embedding
 
-
 def _create_db(documents, embedding):
-    db = FAISS.from_documents(documents, embedding=embedding)
+    # AISS在高效相似度搜索和GPU加速方面表现出色
+    # ChromaDB则提供了全面的数据库功能和分布式处理能力
+    db = FAISS.from_documents(
+        documents, 
+        embedding=embedding
+    )
     db.save_local(f"data/{EMBEDDING_DB_NAME}")
 
     return db
-
 
 def make_embedding_db():
     # 获取原先的爬取的网页文档
@@ -92,7 +101,6 @@ def make_embedding_db():
     print(f"[embedding]: embedding successful!!!")
     print(f"[embedding]: !!!!!!!!!!!!!!!!!!!!!!!\n\n")
     return db
-
 
 if __name__ == "__main__":
     # 基于爬虫文档创建向量数据库
