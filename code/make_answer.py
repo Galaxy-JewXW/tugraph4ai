@@ -20,10 +20,8 @@ import jieba
 from setting import *
 from make_embedding import get_docs
 
-
 def _format_docs(docs):
     return "\n".join(doc.page_content for doc in docs)
-
 
 def _get_embedding_model():
     model_name = EMBEDDING_MODEL_NAME
@@ -38,13 +36,6 @@ def _get_embedding_model():
         query_instruction="为这个句子生成表示以用于检索相关文章:",
     )
     return embedding_model
-
-
-def _get_reranker():
-    reranker = FlagReranker(
-        RERANKER_MODEL_NAME, use_fp16=True
-    )  # Setting use_fp16 to True speeds up
-    return reranker
 
 # 获取检索器
 def _get_embedding_retriever():
@@ -62,7 +53,7 @@ def _get_embedding_retriever():
     retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
 
     # 如果不需要混合分词，则取消注释
-    return retriever
+    # return retriever
 
     # 重新生成docs耗时过久
     docs = get_docs()
@@ -139,9 +130,10 @@ def _answer_problem(problem_file, result_file):
     with open(problem_file, "r") as file:
         for line in file:
             data = json.loads(line)
-            question = _rewrite_question(data["input_field"])
+            question = data["input_field"]
+            rewrite = _rewrite_question(data["input_field"])
 
-            result = rag.invoke(question)
+            result = rag.invoke(rewrite)
             results.append({
                 "id": data["id"],
                 "output_field": result["answer"]
