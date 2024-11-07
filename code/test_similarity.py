@@ -59,11 +59,11 @@ if __name__ == "__main__":
     # 计算平均相似度
     average_similarity = total_similarity / count if count > 0 else 0
     
-    error_list_sorted = sorted(error_list, key=lambda x: x[1])
+    error_list = sorted(error_list, key=lambda x: x[1])
     output_file = result_dir + 'error_similar.log'
     with open(output_file, 'w', encoding='utf-8') as outfile:
         for item in error_list:
-            content = f"ID: {item[0]}, 相似度: {item[1]}:\n\t{item[2]}\n\t{item[3]}\n"
+            content = f"ID: {item[0]}, 相似度: {item[1]}:\n\t{item[2]}\n\t{item[3]}\n\n"
             print(content)
             outfile.write(content)
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
