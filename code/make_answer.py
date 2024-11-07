@@ -152,7 +152,7 @@ def _answer_problem(problem_file, result_file):
 
 
 def answer_question():
-    _answer_problem("data/test1.jsonl", "result/answer.jsonl")
+    # _answer_problem("data/test1.jsonl", "result/answer.jsonl")
     _answer_problem("data/val.jsonl", "result/test_ans.jsonl")
 
 

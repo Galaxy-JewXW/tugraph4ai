@@ -20,7 +20,7 @@ from langchain import hub
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables import RunnableParallel
 from langchain_community.document_loaders import PyPDFDirectoryLoader
-
+import re
 from setting import *
 
 
@@ -72,7 +72,8 @@ def _get_markdown(root_dir):
 
     # 初始化MarkdownHeaderTextSplitter
     text_splitter = MarkdownHeaderTextSplitter(
-        headers_to_split_on=headers_to_split_on
+        headers_to_split_on=headers_to_split_on,
+        strip_headers=False
     )
 
     all_documents = list()
@@ -80,6 +81,8 @@ def _get_markdown(root_dir):
     for md_file in md_files:
         with open(md_file, 'r', encoding='utf-8') as f:
             content = f.read()
+            # 正则匹配删去所有图片链接
+            content = re.sub(r'!\[.*?\]\(.*?\)', '', content)
             # 使用MarkdownHeaderTextSplitter进行分割
             documents = text_splitter.split_text(content)
             # 为每个文档添加源文件信息到元数据
@@ -128,6 +131,8 @@ def make_embedding_db():
 
     # 将提取到的子页面分解为更小的文本块
     # documents = _get_contents(urls)
+
+    # 读取本地存储好的markdown文件
     documents = _get_markdown('data/docs')
     print(f"[embedding]: {len(documents)} documents got")
 
@@ -175,7 +180,24 @@ def get_retrieved_documents_string(retriever, query):
     # 将列表中的行合并为一个字符串并返回
     return '\n'.join(output_lines)
 
-
+def print_retrieved_documents(retriever, query):
+    # 获取相关文档
+    documents = retriever.get_relevant_documents(query)
+    
+    # 检查是否有返回的文档
+    if not documents:
+        print("未找到相关的文档。")
+        return
+    
+    # 遍历并格式化输出
+    for idx, doc in enumerate(documents, 1):
+        print(f"文档 {idx}:")
+        print("内容:")
+        print(doc.page_content)
+        print("元数据:")
+        for key, value in doc.metadata.items():
+            print(f"  {key}: {value}")
+        print('-' * 40)
 
 if __name__ == "__main__":
     # 基于爬虫文档创建向量数据库
@@ -184,6 +206,13 @@ if __name__ == "__main__":
     # 检索时返回的相关文档数量
     search_num = SEARCH_NUM
     retriever = db.as_retriever(search_kwargs={"k": search_num})
+
+    print_retrieved_documents(
+        retriever=retriever,
+        query="TuGraph 的边是否支持索引？"
+    )
+
+    # 对验证集查询文档
     with open('data/val.jsonl', 'r') as f:
         import json
         output_temp = list()
