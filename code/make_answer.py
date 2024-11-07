@@ -139,7 +139,7 @@ def _answer_problem(problem_file, result_file):
                 "output_field": result["answer"]
             })
 
-            print(f"[answer]: \n\tinit is: {question}: \n\tanswer is: {result['answer']}")
+            print(f"[answer]: \n\tquestion is: {question}: \n\tanswer is: {result['answer']}")
             print("##################################")
 
     # 将提取的数据写入到answer.jsonl文件中
