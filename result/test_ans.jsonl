@@ -1,0 +1,50 @@
+{"id": "VAL-1", "output_field": "根据提供的文档，TuGraph-DB中RPC及HA服务的verbose参数有几个设置级别并没有明确说明。文档中提到了在线导入模式的命令行选项`-v, --verbose`用于设置verbose级别，但没有具体说明有多少个设置级别。因此，我无法确定verbose参数的设置级别数量。"}
+{"id": "VAL-2", "output_field": "根据提供的上下文，未明确指出哪个磁盘IO监控指标值超过10000时会触发危急颜色模式。文档中提到了TuGraph数据库可以监控磁盘、内存、网络IO等多种性能指标，但未具体说明触发危急颜色模式的具体阈值。建议查阅更详细的TuGraph监控配置文档或官方说明以获取确切信息。"}
+{"id": "VAL-3", "output_field": "TuGraph-DB中`FieldData`类的`IsReal()`函数用于检测数据类型是否为实数类型，例如`FLOAT`或`DOUBLE`。"}
+{"id": "VAL-4", "output_field": "在TuGraph-DB中，成功修改用户描述后应返回的状态码是200 OK。"}
+{"id": "VAL-5", "output_field": "在TuGraph-DB中，边所关联的两个顶点字段不必须是顶点的主键。边的起点和终点可以通过指定顶点类型的主键字段和对应的值来标识，但这些字段并不要求是顶点的主键字段，只是用来区分和识别起点和终点。具体实现时，可以通过参数化特性指定这些字段，而不必直接使用顶点的主键字段。"}
+{"id": "VAL-6", "output_field": "根据提供的上下文，TuGraph-DB中OutEdgeIterator类的Delete方法的具体功能没有被直接描述。但根据上下文中提到的DELETE请求用于删除已有实体，如删除点，边等，可以推断OutEdgeIterator类的Delete方法可能是用于删除边的。然而，没有具体的代码示例或详细说明，因此不能提供确切的功能描述。"}
+{"id": "VAL-7", "output_field": "要调整TuGraph-DB的日志等级，可以通过修改配置文件中的`verbose`参数来实现。`verbose`参数控制日志的详细程度，分为`0, 1, 2`三个等级，其中`0`为仅输出错误日志，`1`为输出主要事件日志，`2`为输出最详细的调试信息。此外，日志的输出位置可以通过`log_dir`参数指定，若为空则输出到控制台。"}
+{"id": "VAL-8", "output_field": "TuGraph-DB 机器性能指标中的“memory”指的是数据库服务所在机器的内存使用情况。具体来说，它包括数据在访问时加载到内存中的部分，以及系统运行时占用的内存资源。由于TuGraph是基于磁盘的数据库，数据仅在访问时才会加载到内存中，因此内存使用情况对系统性能有重要影响。"}
+{"id": "VAL-9", "output_field": "在TuGraph-DB中，如果不选择清空画布数据按钮，导入的数据会追加至画布区域，而不是替换原有数据。这意味着每次执行查询的结果都会添加到画布上，不会清除之前的数据。"}
+{"id": "VAL-10", "output_field": "要通过邮件向TuGraph-DB团队提出产品建议，可以发送邮件至tugraph@service.alipay.com。在邮件中详细描述您的建议和想法，以便团队更好地理解和评估。此外，您也可以通过官网、GitHub Issue、GitHub Discussions或Slack等其他联系方式与团队沟通。"}
+{"id": "VAL-11", "output_field": "是的，TuGraph-DB 支持对边创建索引以加速查询。TuGraph 允许为边属性创建普通索引和组合索引，提升查询效率。例如，可以使用 `CALL db.addEdgeIndex('edge1', 'field1', false, false)` 为边类型 `edge1` 的字段 `field1` 添加非唯一索引。"}
+{"id": "VAL-12", "output_field": "TuGraph Monitor的主要功能包括：通过C++ RPC Client与TuGraph通信，查询TuGraph服务所在机器的性能指标，并将结果包装成Prometheus需要的数据模型；提供图数据库和服务器状态的监控，如读写负载、点边数量、内存、CPU、硬盘等；支持通过设置查询时间间隔最小化对业务查询的影响。"}
+{"id": "VAL-13", "output_field": "TuGraph-DB HA集群的管理工具主要包括`lgraph_peer`和`TuGraphDbRpcClient`。`lgraph_peer`工具可以执行删除节点、转移leader和生成snapshot等功能。`TuGraphDbRpcClient`用于连接和管理HA集群，自动维护连接池，支持横向扩容。"}
+{"id": "VAL-14", "output_field": "要通过POST请求设置TuGraph-DB的Token有效期为永久，需调用`update_token_time`接口，并在请求体中设置`refresh_time`和`expire_time`参数为0。请求需包含`Authorization`头以验证用户身份。例如，发送以下请求可实现永久有效期：\n```\nPOST http://localhost:7070/update_token_time\nAccept: application/json; charset=UTF-8\nContent-Type: application/json\n{\n\"Authorization\": \"Bearer <your_jwt_token>\",\n\"refresh_time\": 0,\n\"expire_time\": 0\n}\n```"}
+{"id": "VAL-15", "output_field": "TuGraph图数据库的研发机构是蚂蚁集团与清华大学。这两家机构联合研发了TuGraph，构建了一套包含图存储、图计算、图学习、图研发平台的完善图技术体系。"}
+{"id": "VAL-16", "output_field": "TuGraph图学习模块依赖的系统主要是TuGraph DB，需要TuGraph-db 3.5.1及以上版本。此外，TuGraph的部署推荐使用Docker镜像tugraph-compile 1.2.4及以上版本，支持主流操作系统如Ubuntu 18.04、CentOS 7和CentOS 8。图学习模块在Python层调用Cython层的算子实现图学习模型的训练。"}
+{"id": "VAL-17", "output_field": "在TuGraph-DB中构造FieldSpec需要以下参数：label（标签名），fields（点属性，字符串列表），values（点数据，列表）。"}
+{"id": "VAL-18", "output_field": "TuGraph-DB在并发性能优化初期主要面临的挑战包括：1. 集中存储方式带来的数据访问瓶颈；2. 不支持分片的数据切分方式导致的扩展性问题；3. 高并发读场景下对主备复制模式的需求；4. 存储容量问题需要通过云上存储解决。"}
+{"id": "VAL-19", "output_field": "在C++客户端中实例化TuGraph-DB的单节点client对象需要三个参数：服务器的URL（形如ip:port）、用户名和密码。具体格式为：\n``` C++\nRpcClient client(\"127.0.0.1:19099\", \"admin\", \"73@TuGraph\");\n```\n其中，`url`是TuGraph服务器的地址，`user`是登录用户名，`password`是登录密码。"}
+{"id": "VAL-20", "output_field": "TuGraph-DB当前支持的查询语言是Cypher，遵循OpenCypher标准。未来计划支持ISO GQL（图查询语言），目前该标准仍处于草稿阶段，TuGraph已基于其Antlr4语法文件实现了一些GQL功能，并计划逐步完善。"}
+{"id": "VAL-21", "output_field": "TuGraph-DB中`deleteProcedure`函数的参数类型和命名如下：\n1. `procedure_type`：存储过程类型，字符串类型，例如`\"CPP\"`或`\"PY\"`。\n2. `procedure_name`：存储过程名称，字符串类型。\n3. `graph`：图名称，字符串类型，默认值为`\"default\"`。\n\n例如：`deleteProcedure(\"CPP\", \"test_plugin1\", \"default\")`。"}
+{"id": "VAL-22", "output_field": "在TuGraph-DB中使用FrontierTraversal进行并行遍历时，应选择事务模式。具体而言，应该使用Procedure v1版本的事务，因为它允许在函数内部创建事务，并可以自由控制多事务。这样可以在并行处理时保证数据的一致性和正确性。"}
+{"id": "VAL-23", "output_field": "根据提供的信息，TuGraph-DB中RpcSingleClient构造函数的参数列表没有直接给出。但可以推断出，用户发送请求时需要传入的参数可能包括：client_version（可选）、token（必要）、is_write_op（可选）和user（可选）。"}
+{"id": "VAL-24", "output_field": "根据提供的文档，TuGraph-DB中expire_time的默认设置是3600秒（24小时）。"}
+{"id": "VAL-25", "output_field": "TuGraph图学习模块包含的四种采样算子分别是：Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling。这些算子用于对图中的顶点和边进行采样，生成训练数据。采样过程在并行计算环境下完成，具有高效性和可扩展性。"}
+{"id": "VAL-26", "output_field": "TuGraph-DB执行UpsertEdge操作时，如果两点之间不存在指定类型的边，则插入新边；如果存在，则更新该边的属性。返回值会包含操作结果，成功时返回200 OK状态码和操作数据，失败时返回相应的错误状态码和错误信息。具体返回值格式包括`errorCode`、`errorMessage`和`data`字段。"}
+{"id": "VAL-27", "output_field": "根据提供的信息，TuGraph支持生成Golang、Java、JavaScript、Python、Rust等语言的解析器。这些语言在TuGraph的代码目录中的demo/Bolt下有示例。因此，ANTLR4可能支持生成这些目标语言的解析器。具体支持情况需查阅ANTLR4官方文档。"}
+{"id": "VAL-28", "output_field": "在提供的上下文中，没有直接提及在TuGraph-DB中对DateTime对象添加超出其范围微秒数会发生什么的具体信息。因此，无法确定这种行为的确切后果。建议查阅TuGraph-DB的官方文档或联系技术支持以获取更准确的答案。"}
+{"id": "VAL-29", "output_field": "TuGraph-DB中的VertexLockGuard是一种锁机制，用于在对特定顶点（vid）进行操作时自动加锁，以确保线程安全。它在进入作用域时对顶点vid加锁，防止其他线程访问该顶点数据，在退出作用域时自动释放锁，从而允许其他线程访问。这有助于在多线程环境中保护数据一致性。"}
+{"id": "VAL-30", "output_field": "在TuGraph-DB中，\"null array\"的具体含义是指一个数组中没有元素，或者数组中的所有元素都是null。"}
+{"id": "VAL-31", "output_field": "TuGraph-DB支持边属性匹配。在Cypher查询中，可以通过边属性进行过滤。例如，可以使用`MATCH (n:chunk {id: '21604c19-0d30-11ef-b83b-0242ac110005'})-[r:kw {name:\"生活补贴\"}]-(m) RETURN n, r, m`这样的查询语句。"}
+{"id": "VAL-32", "output_field": "在TuGraph-DB中定义点类型和边类型，首先需要创建图项目，然后使用REST API添加点类型和边类型。通过指定点类型和边类型的标签（Label）以及它们的属性和属性类型，可以定义点类型和边类型。例如，使用REST API的URI格式为 `http://{host}:{port}/db/{graph_name}/label/{type}/{label_name}`，其中`{type}`可以是`node`或`relationship`。"}
+{"id": "VAL-33", "output_field": "在 TuGraph-DB 中，如果未设置 `log_dir` 参数，则不会生成日志文件。默认情况下，`log_dir` 配置项为空，此时所有日志会输出到控制台。如果手动指定 `log_dir` 配置项，则日志文件会生成在对应的路径下面。"}
+{"id": "VAL-34", "output_field": "TuGraph-DB中`algo.shortestPath`算法可以用于在社交网络中找到两个用户之间的最短关系路径，或者在路由网络中计算两点之间的最短路径。具体使用案例可能包括在社交网络分析中确定两个用户之间的联系紧密程度，或者在物流规划中计算从一个仓库到另一个仓库的最短运输路线。在TuGraph中，可以通过编译算法程序、运行standalone程序或在前端以插件形式上传Python文件来执行`algo.shortestPath`算法。"}
+{"id": "VAL-35", "output_field": "根据提供的信息，TuGraph-DB中GetLabel()方法的返回类型并未直接说明。但是，根据上下文，我们可以推断出GetLabel()方法用于获取图中节点或边的标签（Label），因此其返回类型应该是字符串（string），表示标签的名称。"}
+{"id": "VAL-36", "output_field": "TuGraph-DB当前支持Rust存储过程的v1版本。Rust存储过程的使用包括编译、加载和运行三个步骤，具体操作可参考相关文档。"}
+{"id": "VAL-37", "output_field": "TuGraph-DB的单元测试所使用的测试框架是gtest框架。"}
+{"id": "VAL-38", "output_field": "在TuGraph-DB中创建Label时，必须指定其为顶点（vertex）或边（edge）类型。通过`is_vertex`布尔值字段来区分，若为`true`则表示是顶点Label，若为`false`则表示是边Label。此外，顶点Label需要设置主键属性`primary`，而边Label可以设置边的约束`edge_constraints`。"}
+{"id": "VAL-39", "output_field": "TuGraph-DB中主要使用的两种图分析操作是简单图分析操作和复杂图分析操作。简单图分析操作通常为局部的图分析操作，例如两点间最短路算法SPSP、Jaccard算法等。复杂图分析操作通常涉及全图的多轮数据迭代操作，例如网页排序算法PageRank、社区发现算法Louvain等。"}
+{"id": "VAL-40", "output_field": "在TuGraph-DB代码中添加日志输出埋点，首先需要在代码中包含日志头文件`#include \"tools/lgraph_log.h\"`。然后使用日志宏如`LOG_DEBUG()`, `LOG_INFO()`, `LOG_WARN()`, `LOG_ERROR()`, `LOG_FATAL()`来输出不同级别的日志信息。例如，在函数中添加`LOG_INFO() << \"This is an info log.\";`来记录信息级日志。最后，确保配置文件中`log_dir`和`verbose`参数设置正确，以控制日志输出路径和详细程度。"}
+{"id": "VAL-41", "output_field": "在TuGraph-DB中，删除边的全文索引时，如果边标签或字段不存在，会触发异常。具体异常类型未在提供的上下文中明确指出，但通常会返回错误信息，指出边标签或字段不存在。例如，调用`CALL db.deleteEdgeIndex('edge1', 'field1')`时，如果`edge1`或`field1`不存在，系统会返回相应的错误信息。"}
+{"id": "VAL-42", "output_field": "Grafana在TuGraph-DB中的主要用途是用于可视化监控。它通过与Prometheus结合，从TuGraph的监控接口获取数据，并在Web界面上以图形形式展示图数据库的状态和服务器状态，如读写负载、点边数量、内存、CPU等实时信息。这种方式帮助用户更直观地监控和管理TuGraph数据库的性能和运行状况。"}
+{"id": "VAL-43", "output_field": "TuGraph-DB中的`DeleteProcedure`函数用于删除存储过程。它支持在单机模式和HA模式下使用，但由于删除存储过程是写请求，HA模式下的client只能向leader发送删除请求。该操作会同步删除指定类型和名称的存储过程。"}
+{"id": "VAL-44", "output_field": "TuGraph-DB中PairUniqueIndex的键生成方式是在用户指定的键后面加上起点和终点的vid，每个vid是5bytes长度。这样保证了pair_unique索引key在同一组起点和终点之间不重复。如果属性长度超过470bytes，则无法建立pair_unique索引。"}
+{"id": "VAL-45", "output_field": "TuGraph-DB中的FieldData类用于表示属性数据类型，具体支持的数据类型包括：BOOL、INT8、INT16、INT32、INT64、DATE、DATETIME、FLOAT、DOUBLE、STRING、BLOB、POINT、LINESTRING、POLYGON和FLOAT_VECTOR等。这些数据类型用于定义图中的点和边的属性。"}
+{"id": "VAL-46", "output_field": "在TuGraph-DB进行在线全量导入时，如果数据包出现错误，默认行为是停止导入并打印出已导入的包数。如果指定了`--continue_on_error true`选项，则会忽略数据完整性错误并继续导入，否则导入会在第一个错误包处停止。用户可以修改数据以消除错误，然后使用`--skip_packages N`选项重做导入以跳过已导入的包。"}
+{"id": "VAL-47", "output_field": "在TuGraph-DB的GQL查询中，`ORDER BY`子句用于对`RETURN`子句输出的结果进行排序。它可以根据指定的属性或表达式对结果集进行升序或降序排列，从而使得查询结果更加有序和易于分析。具体使用时，需要在`ORDER BY`后跟上排序的依据字段和排序方向（如ASC或DESC）。"}
+{"id": "VAL-48", "output_field": "TuGraph-DB提供遵从REST规范的HTTP API，允许开发者通过HTTP请求远程调用其服务。具体接口代码和文档位于TuGraph的GitHub仓库中，可以通过[REST接口文档](https://github.com/TuGraph-family/tugraph-db/tree/master/doc/zh-CN/7.client-tools/9.restful-api-legacy.md)进行查阅。请注意，部分接口自2023年4月30日起不再提供支持，统一使用Cypher接口。"}
+{"id": "VAL-49", "output_field": "TuGraph-DB中的`lgraph_peer`工具主要用于高可用集群的管理，包括删除节点、转移leader和生成snapshot等功能。这些操作通常在集群启动后进行，因此`lgraph_peer`工具应在编译部署并启动集群后使用。文档中提到的使用示例也是在集群运行状态下进行的操作。"}
+{"id": "VAL-50", "output_field": "当前TuGraph-DB图数据库应用程序的CPU使用率为25%。这是通过访问`/info/cpu`接口获取的数据，单位为百分比（%）。"}

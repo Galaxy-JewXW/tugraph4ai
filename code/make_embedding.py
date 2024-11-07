@@ -89,10 +89,11 @@ def _get_markdown(root_dir):
     return all_documents
 
 def get_docs():
-    crawl_file = "data/successful_urls.txt"
-    urls = _get_crawl_urls(crawl_file)
-    documents = _get_contents(urls)
-    return documents
+    # crawl_file = "data/successful_urls.txt"
+    # urls = _get_crawl_urls(crawl_file)
+    # documents = _get_contents(urls)
+    # return documents
+    return _get_markdown('data/docs')
 
 def _get_embedding_model():
     model_name = EMBEDDING_MODEL_NAME
@@ -140,34 +141,40 @@ def make_embedding_db():
     print(f"[embedding]: !!!!!!!!!!!!!!!!!!!!!!!\n\n")
     return db
 
-def print_retrieved_documents(retriever, query):
+def get_retrieved_documents_string(retriever, query):
     """
-    根据给定的查询，使用检索器获取相关文档，并以美观的格式打印输出。
+    根据给定的查询，使用检索器获取相关文档，并以美观的格式返回字符串。
 
     参数：
     - retriever: 检索器对象，具有 get_relevant_documents 方法。
     - query: 查询字符串。
 
     返回值：
-    - None
+    - 包含格式化文档信息的字符串
     """
     # 获取相关文档
     documents = retriever.get_relevant_documents(query)
     
+    # 初始化输出字符串列表
+    output_lines = []
+    
     # 检查是否有返回的文档
     if not documents:
-        print("未找到相关的文档。")
-        return
+        return "未找到相关的文档。"
     
     # 遍历并格式化输出
     for idx, doc in enumerate(documents, 1):
-        print(f"文档 {idx}:")
-        print("内容:")
-        print(doc.page_content)
-        print("元数据:")
+        output_lines.append(f"文档 {idx}:")
+        output_lines.append("内容:")
+        output_lines.append(doc.page_content)
+        output_lines.append("元数据:")
         for key, value in doc.metadata.items():
-            print(f"  {key}: {value}")
-        print('-' * 40)
+            output_lines.append(f"  {key}: {value}")
+        output_lines.append('-' * 40)
+    
+    # 将列表中的行合并为一个字符串并返回
+    return '\n'.join(output_lines)
+
 
 
 if __name__ == "__main__":
@@ -177,11 +184,18 @@ if __name__ == "__main__":
     # 检索时返回的相关文档数量
     search_num = SEARCH_NUM
     retriever = db.as_retriever(search_kwargs={"k": search_num})
-    print_retrieved_documents(
-        retriever=retriever, 
-        query="RPC 及 HA 服务中，verbose 参数的设置有几个级别？"
-    )
-    print_retrieved_documents(
-        retriever=retriever, 
-        query="TuGraph-OGM 提供哪些函数操作 TuGraph？"
-    )
+    with open('data/val.jsonl', 'r') as f:
+        import json
+        output_temp = list()
+        for line in f:
+            data = json.loads(line)
+            question = data["input_field"]
+            document_str = get_retrieved_documents_string(
+                retriever=retriever,
+                query=question
+            )
+            output_temp.append(document_str)
+        for i, document_str in enumerate(output_temp):
+            with open(f"data/ref/{i + 1}.txt", 'w') as fw:
+                fw.write(document_str)
+
