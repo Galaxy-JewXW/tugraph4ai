@@ -11,6 +11,8 @@ from langchain_openai import ChatOpenAI
 from langchain.text_splitter import (
     CharacterTextSplitter,
     RecursiveCharacterTextSplitter,
+    MarkdownTextSplitter,
+    MarkdownHeaderTextSplitter
 )
 from langchain_community.document_loaders import TextLoader, WebBaseLoader
 from langchain_core.output_parsers import StrOutputParser
@@ -51,6 +53,41 @@ def _get_contents(urls):
     documents = text_splitter.split_documents(documents)
     return documents
 
+def _get_markdown(root_dir):
+    md_files = list()
+    for dirpath, dirname, filenames in os.walk(root_dir):
+        for filename in filenames:
+            if filename.endswith('.md'):
+                f_path = os.path.join(dirpath, filename)
+                md_files.append(f_path)
+
+    headers_to_split_on = [
+        ("#", "Header1"),
+        ("##", "Header2"),
+        ("###", "Header3"),
+        ("####", "Header4"),
+        ("#####", "Header5"),
+        ("######", "Header6"),
+    ]
+
+    # 初始化MarkdownHeaderTextSplitter
+    text_splitter = MarkdownHeaderTextSplitter(
+        headers_to_split_on=headers_to_split_on
+    )
+
+    all_documents = list()
+
+    for md_file in md_files:
+        with open(md_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            # 使用MarkdownHeaderTextSplitter进行分割
+            documents = text_splitter.split_text(content)
+            # 为每个文档添加源文件信息到元数据
+            for doc in documents:
+                doc.metadata['source_file'] = md_file
+            all_documents.extend(documents)
+    return all_documents
+
 def get_docs():
     crawl_file = "data/successful_urls.txt"
     urls = _get_crawl_urls(crawl_file)
@@ -86,10 +123,11 @@ def make_embedding_db():
     # 获取原先的爬取的网页文档
     crawl_file = "data/successful_urls.txt"
     urls = _get_crawl_urls(crawl_file)
-    print(f"[embedding]: get crawl urls successful")
+    print(f"[embedding]: [{len(urls)}] urls got")
 
     # 将提取到的子页面分解为更小的文本块
-    documents = _get_contents(urls)
+    # documents = _get_contents(urls)
+    documents = _get_markdown('docs')
     print(f"[embedding]: convert urls to documents successful")
 
     # 将文本转换为向量化实例
@@ -102,6 +140,36 @@ def make_embedding_db():
     print(f"[embedding]: !!!!!!!!!!!!!!!!!!!!!!!\n\n")
     return db
 
+def print_retrieved_documents(retriever, query):
+    """
+    根据给定的查询，使用检索器获取相关文档，并以美观的格式打印输出。
+
+    参数：
+    - retriever: 检索器对象，具有 get_relevant_documents 方法。
+    - query: 查询字符串。
+
+    返回值：
+    - None
+    """
+    # 获取相关文档
+    documents = retriever.get_relevant_documents(query)
+    
+    # 检查是否有返回的文档
+    if not documents:
+        print("未找到相关的文档。")
+        return
+    
+    # 遍历并格式化输出
+    for idx, doc in enumerate(documents, 1):
+        print(f"文档 {idx}:")
+        print("内容:")
+        print(doc.page_content)
+        print("元数据:")
+        for key, value in doc.metadata.items():
+            print(f"  {key}: {value}")
+        print('-' * 40)
+
+
 if __name__ == "__main__":
     # 基于爬虫文档创建向量数据库
     db = make_embedding_db()
@@ -109,14 +177,11 @@ if __name__ == "__main__":
     # 检索时返回的相关文档数量
     search_num = SEARCH_NUM
     retriever = db.as_retriever(search_kwargs={"k": search_num})
-
-    print(
-        retriever.get_relevant_documents(
-            "RPC 及 HA 服务中，verbose 参数的设置有几个级别？"
-        )
+    print_retrieved_documents(
+        retriever=retriever, 
+        query="RPC 及 HA 服务中，verbose 参数的设置有几个级别？"
     )
-    print(
-        retriever.get_relevant_documents(
-            "`FieldData` 类中的函数 `IsReal()` 是用来查询什么类型的数据？"
-        )
+    print_retrieved_documents(
+        retriever=retriever, 
+        query="TuGraph-OGM 提供哪些函数操作 TuGraph？"
     )
