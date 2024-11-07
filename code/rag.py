@@ -72,7 +72,7 @@ class RAG:
 
         return "\n\n".join(doc.page_content for doc in reordered_docs)
 
-    def search(self, question):
+    def search(self, question, verbose=False):
         context = self.get_context(question)
 
         PROMPT_TEMPLATE = """
@@ -91,6 +91,7 @@ class RAG:
         chat_llm_chain = LLMChain(
             llm=self.llm,
             prompt=prompt,
+            verbose=verbose, # 是否显示Token
         )
 
         # 生成回复
@@ -131,7 +132,7 @@ def _get_embedding_retriever():
     retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
 
     # 如果不需要混合分词，则取消注释
-    # return retriever
+    return retriever
 
     # 重新生成docs耗时过久
     docs = get_docs()
@@ -141,7 +142,9 @@ def _get_embedding_retriever():
         bm25_params={"k1": 1.5, "b": 0.75},
         preprocess_func=jieba.lcut  # 中文需要使用jieba分词
     )
-    ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, retriever], weights=[0.4, 0.6])
+    ensemble_retriever = EnsembleRetriever(
+                            retrievers=[bm25_retriever, retriever], 
+                            weights=[0.4, 0.6])
 
     return ensemble_retriever
 
@@ -153,3 +156,7 @@ def _get_llm() :
     # llm = get_Qwen_local()
 
     return llm
+  
+if __name__ == "__main__":
+    rag = RAG()
+    print(rag.search("当前图数据库应用程序使用的CPU比率是多少？", verbose=True))

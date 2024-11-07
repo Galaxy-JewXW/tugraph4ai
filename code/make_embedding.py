@@ -41,7 +41,7 @@ def _get_contents(urls):
     loader = WebBaseLoader(urls)
     documents = loader.load()
 
-    separators = ["\n\n",  "\n",   " ",    ".",    ",",     "，",  "。", ]  # 定义分割符
+    separators = ["\n\n", "\n", " ", ".", ",", "，", "。",]  # 定义分割符
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
         chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数

@@ -1,0 +1,58 @@
+ID: VAL-11, 相似度: 0.5247027948498726:
+	暂不支持
+	Yes, edge indexes in TuGraph can be used to speed up query performance.
+
+ID: VAL-18, 相似度: 0.6054459065198898:
+	Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。
+	TuGraph DB的并发性能优化最初面临的主要问题是锁机制的低效，导致高并发场景下性能瓶颈。具体来说，传统锁机制在处理大量并发请求时会产生严重的 contention，影响系统吞吐量。此外，数据一致性和事务处理的复杂性也是需要解决的关键问题。
+
+ID: VAL-21, 相似度: 0.6106763109564781:
+	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
+	DeleteProcedure 函数接受两个参数：一个整型参数命名为 'procedureId'，用于标识要删除的流程；一个布尔型参数命名为 'forceDelete'，用于指示是否强制删除。
+
+ID: VAL-38, 相似度: 0.6201473250985146:
+	是的，需要指定。
+	是的，创建 Label 的请求需要指定该 Label 是否为点（vertex）或边（relationship），通过设置 `is_vertex` 参数为 `true` 或 `false` 来区分。如果是点 Label，还需设置 `primary` 参数作为主键属性；如果是边 Label，可以设置 `edge_constraints` 参数来定义边的起点和终点约束。
+
+ID: VAL-30, 相似度: 0.6255554556846619:
+	标记field是否为空
+	"Value pack时的null array"指的是在特定数据处理或编程上下文中，数组被初始化为空或未分配任何有效值的状态。这通常用于表示无数据、缺失数据或作为默认状态。具体含义需结合具体应用场景进一步解释。
+
+ID: VAL-31, 相似度: 0.6328263729810715:
+	可以写where语句进行过滤
+	TuGraph 支持边属性匹配。在Cypher查询中，可以通过在边的关系类型后面添加花括号来指定边属性的条件，例如 `[r:kw {name:"生活补贴"}]`。如果类似 `MATCH (n:chunk {id: '21604c19-0d30-11ef-b83b-0242ac110005'})-[r:kw {name:"生活补贴"}]-(m) RETURN n, r, m` 的查询不能过滤边属性，可能是因为边属性 `name` 不存在或数据类型不匹配，建议检查边属性的定义和数据类型是否正确。
+
+ID: VAL-43, 相似度: 0.6342042982578278:
+	执行用户定义的程序。
+	DeleteProcedure 函数用于删除已加载的存储过程。在 TuGraph 中，用户可以通过该函数来移除不再需要或过时的存储过程，以便管理和维护系统。该操作通常通过 REST API 或 RPC 接口进行调用。
+
+ID: VAL-6, 相似度: 0.656739205121994:
+	Deletes current edge. The iterator will point to the next out edge if there is any.
+	OutEdgeIterator类的Delete方法用于删除当前指向的出边。删除后，迭代器将指向下一条按(label, tid, dst, eid)排序的出边，如果不存在更多出边，则迭代器变为无效。在无效事务、无效迭代器或只读事务中调用此方法会抛出异常。
+
+ID: VAL-39, 相似度: 0.6570082008838654:
+	简单图分析操作和复杂图分析操作。
+	TuGraph 中使用的两种主要图分析操作是简单图分析操作和复杂图分析操作。简单图分析操作通常为局部的图分析操作，如两点间最短路算法 SPSP、Jaccard 算法；复杂图分析操作通常涉及全图的多轮数据迭代操作，如网页排序算法 PageRank、社区发现算法 Louvain。
+
+ID: VAL-44, 相似度: 0.6603531539440155:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex 的钥匙生成形式通常是将两个或多个字段的值组合成一个唯一的标识符，以确保每个组合在数据库中都是唯一的。例如，可以将用户ID和产品ID组合成一个字符串，如 "UserID_ProductID"。这种方法常用于多字段唯一约束的场景。
+
+ID: VAL-5, 相似度: 0.6677042245864868:
+	是的
+	不一定。边关联的两个点的字段可以是点的主键，也可以是点在存储层自动分配的唯一ID（VID）。TuGraph允许用户自定义点数据的主键，但同时也为每个点分配了一个不可修改的VID，用于在存储层唯一标识该点。因此，边的起点和终点可以是基于主键或VID进行关联。
+
+ID: VAL-50, 相似度: 0.6813003122806549:
+	25%
+	当前图数据库应用程序使用的CPU比率是25%。
+
+ID: VAL-4, 相似度: 0.6917455941438675:
+	200
+	如果成功修改一个用户的描述，应返回状态码 200。
+
+ID: VAL-46, 相似度: 0.6950780302286148:
+	默认行为是在第一个错误包处停止导入。
+	在线全量导入TuGraph时，如果发生数据包错误，默认行为是停止导入过程，并打印出已导入的包数。用户需要修改数据以消除错误后，使用`--skip_packages N`选项重做导入以跳过已导入的包。如果希望忽略数据完整性错误并继续导入，需指定`--continue_on_error true`选项。
+
+
+平均余弦相似度: 0.7866088555753231
