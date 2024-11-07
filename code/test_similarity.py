@@ -17,10 +17,10 @@ def get_similarity(sen1: str, sen2: str):
     # print("归一化的相似度分数:", similarity_score)
     return similarity_score
 
-if __name__ == "__main__":
+def compute_val():
     # 定义文件路径
     file_ans = 'data/val.jsonl'
-    result_dir  = 'result/v2.5_rag/'
+    result_dir  = 'result/'
     file_result = result_dir + 'test_ans.jsonl'
 
     # 初始化字典存储文件1和文件2的输出字段
@@ -67,3 +67,6 @@ if __name__ == "__main__":
             print(content)
             outfile.write(content)
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
+
+if __name__ == "__main__":
+    compute_val()

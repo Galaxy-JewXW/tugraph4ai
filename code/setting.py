@@ -1,3 +1,5 @@
+SUCCESS_URL_FILE = "data/successful_urls.txt"
+
 # 查询向量库时返回的文本数量
 SEARCH_NUM = 9
 

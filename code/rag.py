@@ -76,7 +76,8 @@ class RAG:
         context = self.get_context(question)
 
         PROMPT_TEMPLATE = """
-        As a specialized AI assistant for question-answering, I will use the given context to provide a clear and concise response to your query in no more than three sentences, without adding any LLM-specific filler words such as '好的' or '从资料中可以得出'. If the necessary information is not available, I will let you know.
+        As a specialized AI assistant for question-answering, I will use the given context to provide a clear and concise response to your query in no more than three sentences, without adding any LLM-specific filler words such as '好的' or '从资料中可以得出'. If the necessary information is not available, I will let you know. 
+        Aanswer in a brief way.
         Context: 
         {context}
         ---
@@ -132,7 +133,7 @@ def _get_embedding_retriever():
     retriever = db.as_retriever(search_kwargs={"k": SEARCH_NUM})
 
     # 如果不需要混合分词，则取消注释
-    return retriever
+    # return retriever
 
     # 重新生成docs耗时过久
     docs = get_docs()

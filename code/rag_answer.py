@@ -20,7 +20,7 @@ def _answer_problem(problem_file, result_file):
             })
 
             print(f"[answer]: \n\tquestion is: {question}: \n\tanswer is: {result}")
-            print("##################################")
+            print("##################################\n\n")
 
     # 将提取的数据写入到answer.jsonl文件中
     with open(result_file, "w", encoding="utf-8") as f:
@@ -32,8 +32,8 @@ def _answer_problem(problem_file, result_file):
 
 
 def answer_question():
-    _answer_problem("data/test1.jsonl", "result/rag_answer.jsonl")
-    _answer_problem("data/val.jsonl", "result/rag_test_ans.jsonl")
+    _answer_problem("data/test1.jsonl", "result/answer.jsonl")
+    _answer_problem("data/val.jsonl", "result/test_ans.jsonl")
 
 
 if __name__ == "__main__":

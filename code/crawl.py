@@ -6,10 +6,8 @@ import hashlib
 
 from setting import *
 
-# 全局集合，用于存储已访问过的 URL
-visited = set()
 # 用于存储成功访问的 URL
-successful_urls = []
+successful_urls = set()
 # 用于存储每个页面内容的哈希值，去重使用
 content_hashes = set()
 
@@ -18,11 +16,12 @@ def get_content_hash(content):
     return hashlib.md5(content.encode('utf-8')).hexdigest()
 
 # 定义递归函数，爬取每个页面
-def crawl(url, base_url):
-    # 如果已经访问过此URL，则跳过
-    if url in visited:
+def crawl(url, base_url, depth):
+    # # 如果已经访问过此URL，则跳过
+    if url in successful_urls:
         return
-    visited.add(url)  # 记录访问过的URL
+    if depth > 100:
+        return
 
     # 请求页面内容
     try:
@@ -44,7 +43,7 @@ def crawl(url, base_url):
     content_hashes.add(content_hash)
 
     # 如果访问成功且内容不重复，保存这个 URL
-    successful_urls.append(url)
+    successful_urls.add(url)
     print(f"Successfully visited: {url}")
 
     # 解析页面
@@ -65,45 +64,51 @@ def crawl(url, base_url):
                 # 去除 URL 中的查询参数（?及其后内容），如果不需要可以保留
                 new_url = new_url.split('?')[0]
                 # 递归爬取新的页面
-                crawl(new_url, base_url)
+                crawl(new_url, base_url, depth + 1)
 
     # 爬取结束后，稍作休眠
     time.sleep(0.5)  # 避免爬虫过快爬取
 
 # 进行爬取
-start_urls = [
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/",
-  "https://www.oceanbase.com/docs/tugraph-doc-cn",
-  "https://tugraph-db.readthedocs.io/zh-cn/v4.3.2/5.installation%26running/8.high-availability-mode.html",
-  "https://www.oceanbase.com/docs/enterprise-tugraph-doc-cn-10000000001669466",
-  "https://www.oceanbase.com/docs/enterprise-tugraph-doc-cn-10000000001032011",
-  "https://www.oceanbase.com/docs/enterprise-tugraph-doc-cn-10000000001667857",
-  "https://www.oceanbase.com/docs/enterprise-tugraph-doc-cn-10000000001102367",
-  "https://www.modb.pro/db/656598",
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/7.client-tools/8.rpc-api.html",
-  "https://www.modb.pro/db/1782579391289651200",
-  "https://tugraph-db.readthedocs.io/zh-cn/v3.5.1/5.developer-manual/2.running/2.tugraph-running.html",
-  "https://tugraph-db-lipanpan.readthedocs.io/zh-cn/latest/6.utility-tools/6.tugraph-cli.html",
-  "https://tugraph-db-lipanpan.readthedocs.io/zh-cn/latest/8.query/3.vector_index.html",
-  "https://www.modb.pro/db/483644",
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/6.utility-tools/1.data-import.html",
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/4.user-guide/1.tugraph-browser.html",
-  "https://blog.csdn.net/gitblog_00098/article/details/142606629",
-  "https://blog.csdn.net/gitblog_00098/article/details/142606629",
-  "https://www.modb.pro/db/628435",
-  "https://tugraph-db.readthedocs.io/zh-cn/v4.1.0/5.developer-manual/2.running/2.tugraph-running.html",
-  "https://help.aliyun.com/zh/compute-nest/use-cases/tugraph-service-instance-deployment-documentation",
-  "https://www.modb.pro/db/656572",
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/2.introduction/4.schema.html",
-  "https://tugraph-db.readthedocs.io/zh-cn/latest/9.olap&procedure/",
+crawl_urls = [
+    "https://tugraph-db.readthedocs.io/zh-cn/latest/",
+    "https://www.oceanbase.com/docs/tugraph-doc-cn",
+]
+
+doc_urls = [
+    "https://www.modb.pro/db/656598",
+    "https://www.modb.pro/db/1782579391289651200",
+    "https://tugraph-db.readthedocs.io/zh-cn/v3.5.1/5.developer-manual/2.running/2.tugraph-running.html",
+    "https://tugraph-db-lipanpan.readthedocs.io/zh-cn/latest/6.utility-tools/6.tugraph-cli.html",
+    "https://tugraph-db-lipanpan.readthedocs.io/zh-cn/latest/8.query/3.vector_index.html",
+    "https://www.modb.pro/db/483644",
+    "https://tugraph-db.readthedocs.io/zh-cn/latest/6.utility-tools/1.data-import.html",
+    "https://tugraph-db.readthedocs.io/zh-cn/latest/4.user-guide/1.tugraph-browser.html",
+    "https://blog.csdn.net/gitblog_00098/article/details/142606629",
+    "https://blog.csdn.net/gitblog_00098/article/details/142606629",
+    "https://www.modb.pro/db/628435",
+    "https://tugraph-db.readthedocs.io/zh-cn/v4.1.0/5.developer-manual/2.running/2.tugraph-running.html",
+    "https://help.aliyun.com/zh/compute-nest/use-cases/tugraph-service-instance-deployment-documentation",
+    "https://www.modb.pro/db/656572",
+    "https://tugraph-db.readthedocs.io/zh-cn/latest/2.introduction/4.schema.html",
+    "https://tugraph-db.readthedocs.io/zh-cn/latest/9.olap&procedure/",
 ]
 
 def crawl_all_urls():
-    for start_url in start_urls:
-        crawl(start_url, start_url)
+    with open(SUCCESS_URL_FILE, "r") as file:
+        # 假设每一行是一个链接，strip()去除换行符
+        successful_urls.update({line.strip() for line in file.readlines()})
+    
+    for start_url in crawl_urls:
+        crawl(start_url, start_url, 0)
+    
+    # 将 doc_urls 添加到 successful_urls 集合中
+    successful_urls.update(doc_urls)
+    
+    print(successful_urls)
 
     # 将成功访问的 URL 保存到文件
-    with open("data/successful_urls.txt", "a", encoding='utf-8') as f:
+    with open(SUCCESS_URL_FILE, "w", encoding='utf-8') as f:
         for url in successful_urls:
             f.write(url + "\n")
 

@@ -41,7 +41,7 @@ def _get_contents(urls):
     loader = WebBaseLoader(urls)
     documents = loader.load()
 
-    separators = ["\n\n", "\n", " ", ".", ",", "，", "。",]  # 定义分割符
+    separators = ["\n\n", "\n", " ", ".", "。", ";", "；",]  # 定义分割符
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
         chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数
@@ -112,11 +112,6 @@ if __name__ == "__main__":
 
     print(
         retriever.get_relevant_documents(
-            "RPC 及 HA 服务中，verbose 参数的设置有几个级别？"
-        )
-    )
-    print(
-        retriever.get_relevant_documents(
-            "`FieldData` 类中的函数 `IsReal()` 是用来查询什么类型的数据？"
+            "当前图数据库应用程序使用的CPU比率是多少？"
         )
     )
