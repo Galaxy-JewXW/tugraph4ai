@@ -41,24 +41,24 @@ def compute_val():
 
     total_similarity = 0
     count = 0
-    
+
     error_list = []
     for id, output1 in outputs_ans.items():
         if id in outputs_res:
             output2 = outputs_res[id]
-            
+
             # 累加相似度
             similarity = get_similarity(output1, output2)
             total_similarity += similarity
             count += 1
-            
+
             print(f"{similarity}\t{id}:\n\t{output1}\n\t{output2}\n")
             if similarity < 0.7:
                 error_list.append((id, similarity, output1, output2))
 
     # 计算平均相似度
     average_similarity = total_similarity / count if count > 0 else 0
-    
+
     error_list = sorted(error_list, key=lambda x: x[1])
     output_file = result_dir + 'error_similar.log'
     with open(output_file, 'w', encoding='utf-8') as outfile:

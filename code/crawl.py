@@ -92,19 +92,34 @@ doc_urls = [
     "https://www.modb.pro/db/656572",
     "https://tugraph-db.readthedocs.io/zh-cn/latest/2.introduction/4.schema.html",
     "https://tugraph-db.readthedocs.io/zh-cn/latest/9.olap&procedure/",
+    "https://www.modb.pro/db/656587",
+    "https://www.modb.pro/db/656586",
+    "https://www.modb.pro/db/656583",
+    "https://www.modb.pro/db/656583",
+    "https://www.modb.pro/db/656563",
+    "https://www.modb.pro/db/656556",
+    "https://www.modb.pro/db/656554",
+    "https://www.modb.pro/db/656559",
+    "https://www.modb.pro/doc/96740",
+    "https://www.modb.pro/db/656560",
+    "https://www.modb.pro/db/656557",
+    "https://help.aliyun.com/zh/compute-nest/use-cases/tugraph-service-instance-deployment-documentation?spm=5176.28426678.J_HeJR_wZokYt378dwP-lLl.1.2d6b5181EfKqr5",
+    "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw",
+    
+    
 ]
 
 def crawl_all_urls():
     with open(SUCCESS_URL_FILE, "r") as file:
         # 假设每一行是一个链接，strip()去除换行符
         successful_urls.update({line.strip() for line in file.readlines()})
-    
+
     for start_url in crawl_urls:
         crawl(start_url, start_url, 0)
-    
+
     # 将 doc_urls 添加到 successful_urls 集合中
     successful_urls.update(doc_urls)
-    
+
     print(successful_urls)
 
     # 将成功访问的 URL 保存到文件

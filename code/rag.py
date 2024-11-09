@@ -84,6 +84,7 @@ class RAG:
         Question:
         {question}
         ---
+        Note: For questions in the format of 'input_field': question, 'output_field': 'answer', please provide only the answer value without additional text.
         Here is your answer:
         """
 
