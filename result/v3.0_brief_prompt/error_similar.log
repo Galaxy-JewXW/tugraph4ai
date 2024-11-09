@@ -1,0 +1,22 @@
+ID: VAL-22, 相似度: 0.6311819106340408:
+	事务必须是只读的。
+	TRAVERSAL_PARALLEL
+
+ID: VAL-50, 相似度: 0.6565240770578384:
+	25%
+	The provided context does not contain specific information about the CPU usage ratio of the current graph database application. Therefore, I cannot determine the exact CPU usage ratio. Please provide more detailed data for an accurate answer.
+
+ID: VAL-5, 相似度: 0.6601883322000504:
+	是的
+	不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性，具体取决于配置文件中的定义。在配置文件中，通过指定SRC_ID和DST_ID来关联边的起点和终点，这些ID可以是主键或其他属性。
+
+ID: VAL-11, 相似度: 0.6697074174880981:
+	暂不支持
+	边索引支持查询加速。
+
+ID: VAL-44, 相似度: 0.6985947787761688:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex 的钥匙生成形式是将两个或多个字段的值组合成一个唯一的标识符，通常通过连接或哈希这些字段的值来实现。例如，如果两个字段分别为 A 和 B，则钥匙可能为 "A_value+B_value" 或其哈希值。这种方法确保了每个钥匙在数据集中是唯一的。
+
+
+平均余弦相似度: 0.8338703328371048

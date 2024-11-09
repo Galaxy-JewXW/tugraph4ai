@@ -1,0 +1,50 @@
+{"id": "VAL-1", "output_field": "3"}
+{"id": "VAL-2", "output_field": "磁盘IO速率（resources_report中的值）大于10000时会触发危急颜色模式。"}
+{"id": "VAL-3", "output_field": "实数类型的数据"}
+{"id": "VAL-4", "output_field": "200 OK"}
+{"id": "VAL-5", "output_field": "不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性，具体取决于配置文件中的定义。在配置文件中，通过指定SRC_ID和DST_ID来关联边的起点和终点，这些ID可以是主键或其他属性。"}
+{"id": "VAL-6", "output_field": "删除当前边，并将迭代器指向下一条按(label, tid, dst, eid)排序的出边，若无更多出边则迭代器失效。"}
+{"id": "VAL-7", "output_field": "通过修改`verbose`配置项调整TuGraph-DB的日志等级，可选值为0（仅ERROR日志）、1（INFO及以上日志）、2（DEBUG及以上日志）。"}
+{"id": "VAL-8", "output_field": "内存使用量"}
+{"id": "VAL-9", "output_field": "每次执行查询的结果会追加至画布区域。"}
+{"id": "VAL-10", "output_field": "通过钉钉群、微信群、微信公众号、邮箱和电话联系我们，具体邮箱信息请查看联系方式图片。"}
+{"id": "VAL-11", "output_field": "边索引支持查询加速。"}
+{"id": "VAL-12", "output_field": "TuGraph Monitor的主要功能是作为TuGraph服务的客户端，通过TCP链接向TuGraph服务发起Procedure请求，收集TuGraph服务所在机器的性能指标，并将这些指标数据包装成Prometheus需要的数据模型，以便Prometheus服务定期获取并保存到时序数据库中。"}
+{"id": "VAL-13", "output_field": "`lgraph_peer`"}
+{"id": "VAL-14", "output_field": "要修改Token的有效期为无限期，您需要使用POST方法调用`/update_token_time`接口，并将`refresh_time`和`expire_time`参数设置为0。"}
+{"id": "VAL-15", "output_field": "蚂蚁集团与清华大学"}
+{"id": "VAL-16", "output_field": "TuGraph图学习模块依赖于Python环境。"}
+{"id": "VAL-17", "output_field": "name, type, description, example, required, default, enum, format, minimum, maximum, minLength, maxLength, pattern, items, properties, additionalProperties, readOnly, writeOnly, deprecated, title, multipleOf, exclusiveMinimum, exclusiveMaximum, anyOf, allOf, oneOf, not, if, then, else, const, contains, propertyNames"}
+{"id": "VAL-18", "output_field": "TuGraph DB最初面临的主要问题是写放大行为导致的性能瓶颈，以及缺乏数据压缩（compaction）导致的数据不断增长。"}
+{"id": "VAL-19", "output_field": "实例化单节点client对象需要以下参数：服务器地址（ip:port），用户名，密码。"}
+{"id": "VAL-20", "output_field": "TuGraph-DB查询引擎目前支持使用Cypher查询语言，并计划在未来支持ISO GQL查询语言。"}
+{"id": "VAL-21", "output_field": "`DeleteProcedure` 函数接受两个参数：`db`（数据库实例）和`procedure_name`（存储过程名称）。"}
+{"id": "VAL-22", "output_field": "TRAVERSAL_PARALLEL"}
+{"id": "VAL-23", "output_field": "url, user, password"}
+{"id": "VAL-24", "output_field": "24小时"}
+{"id": "VAL-25", "output_field": "Neighbor Sampling、Edge Sampling、Random Walk Sampling、Negative Sampling"}
+{"id": "VAL-26", "output_field": "True if the edge is inserted, false if the edge is updated."}
+{"id": "VAL-27", "output_field": "Java, C#, Python, JavaScript, Swift, Go, Rust, PHP, Dart, Kotlin, and others."}
+{"id": "VAL-28", "output_field": "OutOfRange异常会被抛出。"}
+{"id": "VAL-29", "output_field": "VertexLockGuard是一个用于管理顶点锁的对象，确保在并发更新时顶点的正确锁定和解锁。它通过构造时自动锁定顶点，析构时自动解锁顶点，简化了锁的管理。返回的VertexLockGuard与指定顶点对应。"}
+{"id": "VAL-30", "output_field": "'null array'在'value pack'时通常表示一个空数组，即不包含任何元素的数组。它可能用于表示无数据或默认状态。具体含义需结合上下文进一步确认。"}
+{"id": "VAL-31", "output_field": "TuGraph支持边属性匹配。Cypher查询中可以通过在关系类型后添加属性条件来过滤边属性，例如`-[r:kw {name:\"生活补贴\"}]-`。如果查询不生效，可能是因为边属性名或值不正确，或者图中不存在符合条件的边。请检查属性名、值及图数据。"}
+{"id": "VAL-32", "output_field": "在TuGraph中，点类型和边类型可以通过`db.createVertexLabelByJson`和`db.createEdgeLabelByJson`存储过程来定义。这些存储过程接受一个JSON格式的字符串参数，其中包含了点类型或边类型的名称、主键、属性及其类型等详细信息。例如，创建点类型`node1`的JSON定义可能包含属性`id`、`name`、`num`和`desc`，以及它们的类型、是否可选、是否唯一和是否建立索引等信息。通过这种方式，TuGraph能够灵活地定义和管理图模型中的不同类型实体及其关系。"}
+{"id": "VAL-33", "output_field": "如果log_dir不设置，则所有日志会输出到控制台。在daemon模式下，若log_dir配置项为空，则不会向console输出任何日志。"}
+{"id": "VAL-34", "output_field": "MATCH (n1 {name:'Alice'}),(n2 {name:'Bob'})\nCALL algo.shortestPath(n1, n2, {maxHops:5, relationshipQuery:'FRIENDS_WITH'}) YIELD nodeCount, totalCost\nRETURN nodeCount, totalCost"}
+{"id": "VAL-35", "output_field": "string"}
+{"id": "VAL-36", "output_field": "Rust 存储过程目前仅支持v1版本。"}
+{"id": "VAL-37", "output_field": "gtest"}
+{"id": "VAL-38", "output_field": "需要"}
+{"id": "VAL-39", "output_field": "简单分析操作和复杂分析操作。"}
+{"id": "VAL-40", "output_field": "在TuGraph-DB中，开发者可以通过包含`tools/lgraph_log.h`头文件并使用提供的日志宏（如`LOG_DEBUG()`, `LOG_INFO()`, `LOG_WARN()`, `LOG_ERROR()`, `LOG_FATAL()`）来在代码中增加日志输出埋点。例如：\n\n```cpp\n#include \"tools/lgraph_log.h\"\n\nvoid LogExample() {\n    LOG_DEBUG() << \"This is a debug level log message.\";\n    LOG_INFO() << \"This is a info level log message.\";\n    LOG_WARN() << \"This is a warning level log message.\";\n    LOG_ERROR() << \"This is a error level log message.\";\n    LOG_FATAL() << \"This is a fatal level log message.\";\n}\n```"}
+{"id": "VAL-41", "output_field": "InputError"}
+{"id": "VAL-42", "output_field": "Grafana主要用于从多个数据源中获取数据，并将时序数据库中的数据转换为精美图形和可视化效果。"}
+{"id": "VAL-43", "output_field": "删除特定过程或函数。"}
+{"id": "VAL-44", "output_field": "PairUniqueIndex 的钥匙生成形式是将两个或多个字段的值组合成一个唯一的标识符，通常通过连接或哈希这些字段的值来实现。例如，如果两个字段分别为 A 和 B，则钥匙可能为 \"A_value+B_value\" 或其哈希值。这种方法确保了每个钥匙在数据集中是唯一的。"}
+{"id": "VAL-45", "output_field": "BOOL, INT8, INT16, INT32, INT64, DATE, DATETIME, FLOAT, DOUBLE, STRING, BLOB, POINT, LINESTRING, POLYGON, FLOAT_VECTOR"}
+{"id": "VAL-46", "output_field": "如果发生数据包错误，默认行为是停止导入并打印出已导入的包数。"}
+{"id": "VAL-47", "output_field": "`ORDER BY`在GQL中用于对查询结果进行排序。"}
+{"id": "VAL-48", "output_field": "TuGraph-DB提供HTTP接口，对应的接口代码在文档中有详细描述。"}
+{"id": "VAL-49", "output_field": "lgraph_peer工具的信息在提供的文档中未提及，无法确定其是否仅通过编译方式部署后才有。建议查阅相关官方文档或联系技术支持获取准确信息。"}
+{"id": "VAL-50", "output_field": "The provided context does not contain specific information about the CPU usage ratio of the current graph database application. Therefore, I cannot determine the exact CPU usage ratio. Please provide more detailed data for an accurate answer."}

@@ -41,9 +41,6 @@ def _get_embedding_model():
 def _get_embedding_retriever():
     embedding_model = _get_embedding_model()
 
-    # 用于重排检索结果的实例
-    # reranker = _get_reranker()
-
     # 用于存储和检索文档的嵌入向量
     db = FAISS.load_local(
         f"data/{EMBEDDING_DB_NAME}",
@@ -140,7 +137,7 @@ def _answer_problem(problem_file, result_file):
             })
 
             print(f"[answer]: \n\tquestion is: {question}: \n\tanswer is: {result['answer']}")
-            print("##################################")
+            print("##################################\n\n")
 
     # 将提取的数据写入到answer.jsonl文件中
     with open(result_file, "w", encoding="utf-8") as f:
