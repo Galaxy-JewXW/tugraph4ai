@@ -1,65 +1,21 @@
-ID: VAL-50, 相似度: 0.49586530355736613:
+ID: VAL-50, 相似度: 0.5983721762895584:
 	25%
 	当前图数据库应用程序使用的CPU比率是多少？
 
 ---
 很抱歉，您提供的信息中未包含图数据库应用程序使用的CPU比率的具体数据。需要查看系统监控或性能分析报告以获取该信息。
 
-ID: VAL-21, 相似度: 0.593642845749855:
-	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
-	DeleteProcedure 函数接受的参数类型和命名在提供的上下文中未明确说明。通常，此类函数可能接受存储过程名称和数据库实例等参数，但具体细节需查阅TuGraph的官方文档或API参考。
-
-ID: VAL-31, 相似度: 0.6168598681688309:
-	可以写where语句进行过滤
-	TuGraph支持边属性匹配。Cypher查询中过滤边属性的正确语法应为`MATCH (n:chunk {id: '21604c19-0d30-11ef-b83b-0242ac110005'})-[r:kw]->(m) WHERE r.name = "生活补贴" RETURN n, r, m`。您提供的查询语法错误，应使用`WHERE`子句来过滤边属性。
-
-ID: VAL-30, 相似度: 0.6206263303756714:
-	标记field是否为空
-	"Value pack时的null array"通常指的是在特定数据处理或编程上下文中，一个数组被初始化但没有包含任何元素，即其长度为0。这可以用于表示空集合或未赋值的状态。具体含义需结合具体应用场景解释。
-
-ID: VAL-5, 相似度: 0.6308013498783112:
-	是的
-	边关联的两个点的字段不一定是点的主键，而是点的VID（Vertex ID），这是在存储层自动分配的唯一ID，用户不可修改。主键是用户自定义的，用于在点类型中唯一标识一个点，但边关联时使用的是VID来确保唯一性和正确性。
-
-ID: VAL-18, 相似度: 0.6311773359775543:
-	Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。
-	TuGraph DB的并发性能优化最初面临的主要问题是锁冲突和资源争用，导致高并发场景下性能下降。此外，数据一致性和事务处理的复杂性也是关键挑战。这些问题限制了数据库在高负载环境中的表现。
-
-ID: VAL-43, 相似度: 0.6325342357158661:
-	执行用户定义的程序。
-	DeleteProcedure 函数用于删除已加载的存储过程。它允许用户从 TuGraph 数据库中移除不再需要的存储过程，释放相关资源。该操作可以通过 REST API 或 RPC 调用执行。
-
-ID: VAL-11, 相似度: 0.6528768688440323:
+ID: VAL-11, 相似度: 0.6250988692045212:
 	暂不支持
 	是的，边索引支持查询加速。TuGraph允许对边的属性创建索引，包括unique索引、pair_unique索引和non_unique索引，以提升查询效率。不同类型的边索引有不同的功能和限制，但均旨在加速边的查找和写入操作。
 
-ID: VAL-19, 相似度: 0.6553152501583099:
-	需要url（如"127.0.0.1:19099"）、user（如"admin"）和password（如"73@TuGraph"）。
-	To instantiate a single-node client object in the C++ client of TuGraph, you need to provide the following parameters: the URL of the TuGraph host (in the format ip:port), the login username, and the login password.
+ID: VAL-5, 相似度: 0.6296633780002594:
+	是的
+	边关联的两个点的字段不一定是点的主键，而是点的VID（Vertex ID），这是在存储层自动分配的唯一ID，用户不可修改。主键是用户自定义的，用于在点类型中唯一标识一个点，但边关联时使用的是VID来确保唯一性和正确性。
 
-ID: VAL-6, 相似度: 0.6573126912117004:
-	Deletes current edge. The iterator will point to the next out edge if there is any.
-	OutEdgeIterator类的Delete方法删除当前指向的出边，并将迭代器指向下一条按(label, tid, dst, eid)排序的出边。如果没有更多出边，迭代器变为无效。在无效事务、无效迭代器或只读事务中调用会抛出异常。
-
-ID: VAL-39, 相似度: 0.6587890386581421:
-	简单图分析操作和复杂图分析操作。
-	TuGraph 中使用的两种主要图分析操作是简单图分析操作和复杂图分析操作。简单图分析操作通常为局部的图分析操作，如两点间最短路算法 SPSP、Jaccard 算法等，它们可以直接在图存储上执行。复杂图分析操作通常涉及全图的多轮数据迭代操作，如网页排序算法 PageRank、社区发现算法 Louvain 等，这些操作需要额外导出快照执行。
-
-ID: VAL-44, 相似度: 0.6708372384309769:
-	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
-	PairUniqueIndex 的钥匙生成形式通常是将两个或多个字段的值组合成一个唯一的标识符，常见的方法包括直接拼接这些字段的值或者使用哈希函数生成一个唯一的哈希值。这种形式确保了组合后的钥匙在数据集中是唯一的，用于快速检索和数据关联。具体实现可能因应用场景和数据库系统而异。
-
-ID: VAL-4, 相似度: 0.6917455941438675:
-	200
-	如果成功修改一个用户的描述，应返回状态码 200。
-
-ID: VAL-35, 相似度: 0.6939162611961365:
-	The label.
-	方法 `GetLabel()` 返回一个字符串类型的结果，表示节点的标签。
-
-ID: VAL-38, 相似度: 0.6977890133857727:
-	是的，需要指定。
-	是的，创建 Label 的请求需要指定该 Label 是否为点（vertex）或边（relationship），通过设置 `is_vertex` 参数为 `true` 或 `false` 来区分。
+ID: VAL-22, 相似度: 0.6855386793613434:
+	事务必须是只读的。
+	要在FrontierTraversal中并行执行遍历，必须使用支持并行操作的事务模式。具体来说，事务模式应允许多线程并发访问和修改数据，以确保并行遍历的正确性和效率。通常这需要选择事务的“并行”或“多线程”模式。
 
 
-平均余弦相似度: 0.7786346772965044
+平均余弦相似度: 0.8159131687879563

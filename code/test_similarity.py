@@ -19,10 +19,9 @@ def get_similarity(sen1: str, sen2: str):
     # print("归一化的相似度分数:", similarity_score)
     return similarity_score
 
-def compute_val():
+def compute_val(result_dir='result/'):
     # 定义文件路径
     file_ans = 'data/val.jsonl'
-    result_dir  = 'result/v1.0/'
     file_result = result_dir + 'test_ans.jsonl'
 
     # 初始化字典存储文件1和文件2的输出字段
@@ -71,4 +70,9 @@ def compute_val():
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
 
 if __name__ == "__main__":
-    compute_val()
+    compute_val('result/v1.0/')
+    compute_val('result/v2.0/')
+    compute_val('result/v2.5_rag/')
+    compute_val('result/v2.6_brief/')
+    compute_val('result/v2.7_new/')
+    compute_val('result/v3.0_brief_prompt/')

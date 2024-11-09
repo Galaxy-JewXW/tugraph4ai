@@ -1,70 +1,22 @@
-ID: VAL-50, 相似度: 0.4997381139546633:
-	25%
-	抱歉，我无法提供当前TuGraph-DB应用的CPU使用率信息。
-
-ID: VAL-22, 相似度: 0.5713079795241356:
-	事务必须是只读的。
-	在TuGraph-DB中，使用FrontierTraversal进行并行遍历时，应选择事务模式为TRAVERSAL_PARALLEL。
-
-ID: VAL-4, 相似度: 0.5931762158870697:
-	200
-	在TuGraph-DB中，成功修改用户描述后应返回的状态码是200。
-
-ID: VAL-18, 相似度: 0.598089873790741:
-	Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。
-	TuGraph-DB在并发性能优化方面最初遇到的主要挑战是图操作的特性。图负载的数据访问在拓扑上有一定的局部性，同一个点的边通常会被同时访问，而且图负载在访问点边时，通常会访问其对应的属性，来作为遍历过滤的条件。此外，写操作可能伴随着大量的读操作，需要在单个事务周期里处理。
-
-ID: VAL-30, 相似度: 0.6149814277887344:
-	标记field是否为空
-	根据提供的信息，我无法确定TuGraph-DB中value pack时null array的具体含义。
-
-ID: VAL-11, 相似度: 0.6240405738353729:
+ID: VAL-11, 相似度: 0.6307015120983124:
 	暂不支持
 	TuGraph-DB的边索引支持查询加速。TuGraph支持对点或边的属性创建索引，以提升查询效率。边的索引类型包括普通索引和组合索引，普通索引基于一个点或边的一个属性创建，而组合索引基于一个点或边的多个属性创建。
 
-ID: VAL-44, 相似度: 0.624744325876236:
-	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
-	TuGraph-DB中PairUniqueIndex的键生成机制是在用户指定的键后面加上源点和目标点的vid，每个vid长度为5bytes，因此最大键长度为470bytes。这种索引类型只能创建于边的schema中，用于保证同一组起点和终点之间边的属性值唯一。
-
-ID: VAL-31, 相似度: 0.6365666389465332:
-	可以写where语句进行过滤
-	TuGraph-DB目前并未完全支持所有的GQL语法，因此可能不支持边属性匹配。在Cypher查询中，无法通过边属性进行过滤是因为TuGraph的GQL实现还未完全遵循ISO GQL标准，可能缺少对WHERE子句在边匹配中过滤边属性的支持。
-
-ID: VAL-38, 相似度: 0.6398398280143738:
-	是的，需要指定。
-	在TuGraph-DB中创建Label时，必须指定该Label是用于点（vertex）还是边（relationship）。这是通过`is_vertex`字段来指定的，如果`is_vertex`为`true`，则表示Label用于点；如果为`false`，则表示Label用于边。
-
-ID: VAL-21, 相似度: 0.6399568617343903:
-	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
-	TuGraph-DB中DeleteProcedure函数的参数类型和命名分别是：参数类型为string，命名为'user_name'。
-
-ID: VAL-43, 相似度: 0.6516495198011398:
-	执行用户定义的程序。
-	DeleteProcedure函数在TuGraph-DB中用于删除存储过程。它可以动态地加载、更新和删除存储过程，支持C++、Python和Rust语言编写的存储过程。删除操作会同步删除指定类型的所有数据，数据量大时会有时间消耗。
-
-ID: VAL-26, 相似度: 0.6592161953449249:
-	如果边已存在，则返回False；如果新建了边，则返回True。
-	在TuGraph-DB中执行UpsertEdge操作时，如果提供的参数对应的边已存在，则更新该边的属性；如果对应的边不存在，则插入一条新的边。
-
-ID: VAL-46, 相似度: 0.6610536426305771:
-	默认行为是在第一个错误包处停止导入。
-	TuGraph-DB在线全量导入时，如果遇到数据包错误，默认的处理行为是停止导入，并打印出已导入的包数。如果指定了`--continue_on_error true`选项，则会忽略数据完整性错误，并忽略违规行。用户可以修改数据以消除错误，然后使用`--skip_packages N`重做导入以跳过已导入的包。
-
-ID: VAL-6, 相似度: 0.6658678650856018:
-	Deletes current edge. The iterator will point to the next out edge if there is any.
-	TuGraph-DB中OutEdgeIterator类的Delete方法用于删除当前迭代器指向的边。删除后，迭代器会移动到下一条按(label, tid, dst, eid)排序的出边，如果没有更多出边，则迭代器变为无效。
-
-ID: VAL-5, 相似度: 0.6701389253139496:
+ID: VAL-5, 相似度: 0.6484723538160324:
 	是的
 	在TuGraph-DB中，边关联的两个点的字段不必必须是点的主键。
 
-ID: VAL-35, 相似度: 0.6790274977684021:
+ID: VAL-50, 相似度: 0.6495264023542404:
+	25%
+	抱歉，我无法提供当前TuGraph-DB应用的CPU使用率信息。
+
+ID: VAL-35, 相似度: 0.6903212666511536:
 	The label.
 	TuGraph-DB中GetLabel()方法的返回类型是字符串。
 
-ID: VAL-2, 相似度: 0.692632645368576:
-	value大于10000时。
-	在TuGraph-DB的磁盘IO监控配置中，当磁盘IO的指标值超过10000时会触发危急颜色模式。
+ID: VAL-38, 相似度: 0.6971975564956665:
+	是的，需要指定。
+	在TuGraph-DB中创建Label时，必须指定该Label是用于点（vertex）还是边（relationship）。这是通过`is_vertex`字段来指定的，如果`is_vertex`为`true`，则表示Label用于点；如果为`false`，则表示Label用于边。
 
 
-平均余弦相似度: 0.7613646941259503
+平均余弦相似度: 0.8144486221671104

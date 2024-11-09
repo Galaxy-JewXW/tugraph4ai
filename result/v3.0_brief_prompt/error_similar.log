@@ -1,66 +1,22 @@
-ID: VAL-22, 相似度: 0.5226747170090675:
+ID: VAL-22, 相似度: 0.6311819106340408:
 	事务必须是只读的。
 	TRAVERSAL_PARALLEL
 
-ID: VAL-6, 相似度: 0.5354058668017387:
-	Deletes current edge. The iterator will point to the next out edge if there is any.
-	删除当前边，并将迭代器指向下一条按(label, tid, dst, eid)排序的出边，若无更多出边则迭代器失效。
-
-ID: VAL-50, 相似度: 0.5788353681564331:
+ID: VAL-50, 相似度: 0.6565240770578384:
 	25%
 	The provided context does not contain specific information about the CPU usage ratio of the current graph database application. Therefore, I cannot determine the exact CPU usage ratio. Please provide more detailed data for an accurate answer.
 
-ID: VAL-17, 相似度: 0.5887632220983505:
-	需要字段名称、字段类型和一个布尔值标识字段是否可选。
-	name, type, description, example, required, default, enum, format, minimum, maximum, minLength, maxLength, pattern, items, properties, additionalProperties, readOnly, writeOnly, deprecated, title, multipleOf, exclusiveMinimum, exclusiveMaximum, anyOf, allOf, oneOf, not, if, then, else, const, contains, propertyNames
+ID: VAL-5, 相似度: 0.6601883322000504:
+	是的
+	不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性，具体取决于配置文件中的定义。在配置文件中，通过指定SRC_ID和DST_ID来关联边的起点和终点，这些ID可以是主键或其他属性。
 
-ID: VAL-26, 相似度: 0.5970750749111176:
-	如果边已存在，则返回False；如果新建了边，则返回True。
-	True if the edge is inserted, false if the edge is updated.
+ID: VAL-11, 相似度: 0.6697074174880981:
+	暂不支持
+	边索引支持查询加速。
 
-ID: VAL-1, 相似度: 0.603961706161499:
-	三个级别（0，1，2）。
-	3
-
-ID: VAL-18, 相似度: 0.6119249537587166:
-	Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。
-	TuGraph DB最初面临的主要问题是写放大行为导致的性能瓶颈，以及缺乏数据压缩（compaction）导致的数据不断增长。
-
-ID: VAL-37, 相似度: 0.6234265267848969:
-	TuGraph单元测试采用gtest框架。
-	gtest
-
-ID: VAL-30, 相似度: 0.6301987618207932:
-	标记field是否为空
-	'null array'在'value pack'时通常表示一个空数组，即不包含任何元素的数组。它可能用于表示无数据或默认状态。具体含义需结合上下文进一步确认。
-
-ID: VAL-21, 相似度: 0.6387112438678741:
-	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
-	`DeleteProcedure` 函数接受两个参数：`db`（数据库实例）和`procedure_name`（存储过程名称）。
-
-ID: VAL-31, 相似度: 0.655624508857727:
-	可以写where语句进行过滤
-	TuGraph支持边属性匹配。Cypher查询中可以通过在关系类型后添加属性条件来过滤边属性，例如`-[r:kw {name:"生活补贴"}]-`。如果查询不生效，可能是因为边属性名或值不正确，或者图中不存在符合条件的边。请检查属性名、值及图数据。
-
-ID: VAL-35, 相似度: 0.6566503047943115:
-	The label.
-	string
-
-ID: VAL-45, 相似度: 0.6764447838068008:
-	FieldData用于表示布尔、整型、浮点数、双精度浮点数、字符串、日期、时间、点、线串、多边形、空间数据、浮点向量以及BLOB数据。
-	BOOL, INT8, INT16, INT32, INT64, DATE, DATETIME, FLOAT, DOUBLE, STRING, BLOB, POINT, LINESTRING, POLYGON, FLOAT_VECTOR
-
-ID: VAL-10, 相似度: 0.6857059895992279:
-	邮件地址为tugraph@service.alipay.com。
-	通过钉钉群、微信群、微信公众号、邮箱和电话联系我们，具体邮箱信息请查看联系方式图片。
-
-ID: VAL-3, 相似度: 0.6958343088626862:
-	`IsReal()` 用来查询是否是 `FLOAT` 或 `DOUBLE` 类型的数据。
-	实数类型的数据
-
-ID: VAL-44, 相似度: 0.6963375508785248:
+ID: VAL-44, 相似度: 0.6985947787761688:
 	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
 	PairUniqueIndex 的钥匙生成形式是将两个或多个字段的值组合成一个唯一的标识符，通常通过连接或哈希这些字段的值来实现。例如，如果两个字段分别为 A 和 B，则钥匙可能为 "A_value+B_value" 或其哈希值。这种方法确保了每个钥匙在数据集中是唯一的。
 
 
-平均余弦相似度: 0.7974721775949001
+平均余弦相似度: 0.8338703328371048

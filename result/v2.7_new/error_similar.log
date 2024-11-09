@@ -1,58 +1,18 @@
-ID: VAL-50, 相似度: 0.506401689723134:
+ID: VAL-50, 相似度: 0.6168409958481789:
 	25%
 	对不起，当前图数据库应用程序使用的CPU比率在提供的信息中没有明确说明。请查看具体的系统监控数据或应用程序性能报告以获取这一指标。
 
-ID: VAL-21, 相似度: 0.5512534603476524:
-	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
-	DeleteProcedure 函数接受两个参数：一个字符串类型的参数 `name`，表示要删除的存储过程的名称；一个布尔类型的参数 `force`，表示是否强制删除。命名它们为 `name` 和 `force`。
+ID: VAL-5, 相似度: 0.6590930968523026:
+	是的
+	不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性，具体取决于配置文件中的定义。在配置文件中，通过`SRC_ID`和`DST_ID`指定边的起点和终点，这些字段可以是点的主键或其他唯一标识点的属性。
 
-ID: VAL-1, 相似度: 0.567376159131527:
-	三个级别（0，1，2）。
-	The `verbose` parameter in RPC and HA services has three levels: 0, 1, and 2.
+ID: VAL-11, 相似度: 0.6627581119537354:
+	暂不支持
+	边索引可以支持查询加速。
 
-ID: VAL-18, 相似度: 0.5862201675772667:
-	Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。
-	TuGraph DB的并发性能优化最初面临的主要问题是写放大行为导致的性能瓶颈，以及缺乏数据压缩（compaction）机制导致的数据不断增长问题。这些问题影响了数据库在高并发场景下的稳定性和效率。通过采用多版本append-Only Tree和COW技术，TuGraph试图缓解这些挑战。
-
-ID: VAL-31, 相似度: 0.6240700930356979:
-	可以写where语句进行过滤
-	TuGraph支持边属性匹配。Cypher查询中，边属性匹配应使用`WHERE`子句进行过滤。例如，正确的写法应为：`MATCH (n:chunk {id: '21604c19-0d30-11ef-b83b-0242ac110005'})-[r:kw]->(m) WHERE r.name = "生活补贴" RETURN n, r, m`。直接在边模式中过滤属性可能会导致语法错误。
-
-ID: VAL-30, 相似度: 0.6266416311264038:
-	标记field是否为空
-	在"Value Pack"中，"null array"通常指的是一个未初始化或空值的数组，表示该数组不包含任何元素或数据。具体含义可能因上下文而异，但一般用于表示缺失或无效的数据集合。在某些编程环境中，null array可能用于避免空指针异常或表示特定条件下的默认状态。
-
-ID: VAL-43, 相似度: 0.6408261507749557:
-	执行用户定义的程序。
-	DeleteProcedure 函数用于删除已加载的存储过程。在 TuGraph 中，用户可以通过该函数移除不再需要的存储过程，释放相关资源。此操作可以通过 REST API 或 RPC 调用执行。
-
-ID: VAL-6, 相似度: 0.6542461514472961:
-	Deletes current edge. The iterator will point to the next out edge if there is any.
-	OutEdgeIterator 类的 Delete 方法删除当前边，并将迭代器指向下一条按 (label, tid, dst, eid) 排序的出边，如果不存在更多出边，则迭代器变为无效。在无效事务或只读事务中调用会抛出异常。
-
-ID: VAL-39, 相似度: 0.6597982048988342:
-	简单图分析操作和复杂图分析操作。
-	TuGraph中使用的两种主要图分析操作是简单分析操作和复杂分析操作。简单分析操作通常涉及局部的图分析，如两点间最短路算法SPSP、Jaccard算法；而复杂分析操作通常涉及全图的多轮数据迭代操作，如网页排序算法PageRank、社区发现算法Louvain。
-
-ID: VAL-44, 相似度: 0.6734616160392761:
+ID: VAL-44, 相似度: 0.690990149974823:
 	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
 	PairUniqueIndex 的钥匙生成形式是将两个或多个字段的值组合成一个唯一的标识符，通常通过连接或哈希这些字段的值来实现。例如，可以将两个字段的值用分隔符连接，或者对它们的组合进行哈希运算，以确保生成的钥匙在数据集中是唯一的。这种方法常用于数据库中建立复合主键或唯一约束。
 
-ID: VAL-34, 相似度: 0.6788383573293686:
-	MATCH (n1 {name:'Hugo Weaving'}),(n2 {title:'The Matrix'}) CALL algo.shortestPath(n1,n2) YIELD nodeCount,totalCost RETURN nodeCount,totalCost
-	在实际应用中，`algo.shortestPath` 可以用于社交网络中找到两个用户之间的最短联系路径，例如在LinkedIn上找到用户A与用户B之间的最短职业联系路径，帮助用户发现潜在的职业网络。另一个例子是在交通网络中，用于计算从一个地点到另一个地点的最短路线，如Google Maps中的路线规划功能。
 
-ID: VAL-19, 相似度: 0.6852653920650482:
-	需要url（如"127.0.0.1:19099"）、user（如"admin"）和password（如"73@TuGraph"）。
-	实例化单节点C++客户端对象需要三个参数：服务器地址（格式为ip:port），用户名和密码。
-
-ID: VAL-38, 相似度: 0.690483570098877:
-	是的，需要指定。
-	是的，创建 Label 的请求需要指定该 Label 是否为点（vertex）或边（relationship），通过 `is_vertex` 布尔值字段来区分。如果 `is_vertex` 为 `true`，则表示该 Label 是点 Label；否则是边 Label。
-
-ID: VAL-4, 相似度: 0.6917455941438675:
-	200
-	如果成功修改一个用户的描述，应返回状态码 200。
-
-
-平均余弦相似度: 0.7809807597473264
+平均余弦相似度: 0.8238002680242061
