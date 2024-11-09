@@ -107,7 +107,13 @@ doc_urls = [
     "https://help.aliyun.com/zh/compute-nest/use-cases/tugraph-service-instance-deployment-documentation?spm=5176.28426678.J_HeJR_wZokYt378dwP-lLl.1.2d6b5181EfKqr5",
     "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw",
     "https://mp.weixin.qq.com/s/zJ_kJvrdyU6JiqjV0ZbRrA",
-    "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw"
+    "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw",
+    "https://www.biaodianfu.com/geabase.html",
+    "https://tugraph.tech/blog/?id=16&lang=zh-CN",
+    "https://tugraph.tech/blog/?id=5&lang=zh-CN",
+    "https://github.com/TuGraph-family/tugraph-db/discussions/115",
+    "https://github.com/TuGraph-family/tugraph-db/blob/master/ci/images/tugraph-compile-centos7-Dockerfile",
+    
 ]
 
 def crawl_all_urls():

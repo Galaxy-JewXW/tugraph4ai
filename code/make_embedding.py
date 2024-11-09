@@ -37,19 +37,45 @@ def _get_crawl_urls(filename=None) -> dict:
 
     return all_links
 
-def _get_contents(urls):
-    loader = WebBaseLoader(urls)
-    documents = loader.load()
+import os
+import pickle
 
-    separators = ["\n\n", "\n", " ", ".", "。", ";", "；",]  # 定义分割符
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
-        chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数
-        separators=separators,  # 用于识别文本块边界的分割符
-        keep_separator=False,  # 是否保留这些分割符在文本块中
-    )
-    documents = text_splitter.split_documents(documents)
+def _get_contents(urls):
+    # 存储路径：假设存储在当前目录下的缓存文件夹
+    cache_dir = "cache"
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+    sorted_urls = sorted(urls)
+    documents = list()
+    for url in sorted_urls:
+        cache_file = os.path.join(cache_dir, f"{hash(url)}.pkl")
+        
+        # 如果缓存文件存在，则加载缓存
+        if os.path.exists(cache_file):
+            print(f"[database]: Loading from cache: {url} {hash(url)}.pkl")
+            with open(cache_file, 'rb') as f:
+                content = pickle.load(f)
+        else:
+            print(f"[database]: Downloading content for: {url} {hash(url)}.pkl")
+            loader = WebBaseLoader(url)
+            content = loader.load()
+            
+            # 缓存下载内容
+            with open(cache_file, 'wb') as f:
+                pickle.dump(content, f)
+        
+        # 分割文本内容
+        separators = ["\n\n", "\n", " ", ".", "。", ";", "；",]
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
+            chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数
+            separators=separators,  # 用于识别文本块边界的分割符
+            keep_separator=False,  # 是否保留这些分割符在文本块中
+        )
+        documents.extend(text_splitter.split_documents(content))  # 扩展到所有文档列表
+
     return documents
+
 
 def get_docs():
     crawl_file = "data/successful_urls.txt"
