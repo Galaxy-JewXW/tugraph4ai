@@ -41,9 +41,6 @@ def _get_embedding_model():
 def _get_embedding_retriever():
     embedding_model = _get_embedding_model()
 
-    # 用于重排检索结果的实例
-    # reranker = _get_reranker()
-
     # 用于存储和检索文档的嵌入向量
     db = FAISS.load_local(
         f"data/{EMBEDDING_DB_NAME}",

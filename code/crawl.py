@@ -73,6 +73,7 @@ def crawl(url, base_url, depth):
 crawl_urls = [
     "https://tugraph-db.readthedocs.io/zh-cn/latest/",
     "https://www.oceanbase.com/docs/tugraph-doc-cn",
+    "https://tugraph-analytics.readthedocs.io/en/latest/index_cn/"
 ]
 
 doc_urls = [
@@ -105,8 +106,8 @@ doc_urls = [
     "https://www.modb.pro/db/656557",
     "https://help.aliyun.com/zh/compute-nest/use-cases/tugraph-service-instance-deployment-documentation?spm=5176.28426678.J_HeJR_wZokYt378dwP-lLl.1.2d6b5181EfKqr5",
     "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw",
-    
-    
+    "https://mp.weixin.qq.com/s/zJ_kJvrdyU6JiqjV0ZbRrA",
+    "https://mp.weixin.qq.com/s/1ipuYxSReSvhzSpO8DOaGw"
 ]
 
 def crawl_all_urls():
