@@ -1,4 +1,5 @@
 import os
+import re
 import pickle
 import hashlib
 from urllib.parse import urlparse
@@ -14,9 +15,10 @@ from langchain_openai import ChatOpenAI
 from langchain.text_splitter import (
     CharacterTextSplitter,
     RecursiveCharacterTextSplitter,
+    MarkdownHeaderTextSplitter,
 )
 from langchain_community.document_loaders import TextLoader, WebBaseLoader
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.documents import Document
 from langchain import hub
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables import RunnableParallel
@@ -40,6 +42,11 @@ def _get_crawl_urls(filename=None) -> dict:
 
     return all_links
 
+def _normalize_empty_lines(text, max_empty_lines=1):
+    pattern = r'(\n\s*){' + f'{max_empty_lines + 1},' + r'}'
+    replacement = '\n' * max_empty_lines
+    normalized_text = re.sub(pattern, replacement, text)
+    return normalized_text
 
 def _get_contents(urls):
     # 存储路径：假设存储在当前目录下的缓存文件夹
@@ -48,6 +55,69 @@ def _get_contents(urls):
         os.makedirs(cache_dir)
     sorted_urls = sorted(urls)
     documents = list()
+
+    # url预处理
+    # 1. 删除readthedocs链接
+    sorted_urls = [url for url in sorted_urls if ("readthedocs" not in url.lower() 
+                                                  or "1.procedure/3." in url.lower() 
+                                                  or "1.procedure/2." in url.lower() )]
+    
+    # 2. 删除无法使用的.rst文件
+    sorted_urls = [url for url in sorted_urls if ".rst" not in url.lower()]
+    print(f"filtered urls is: {len(sorted_urls)}")
+
+    # 加载本地markdown文档
+    # 递归查找指定目录下的所有Markdown文件
+
+    headers_to_split_on = [
+        ("#", "Header 1"),
+        ("##", "Header 2"),
+        ("###", "Header 3"),
+        ("####", "Header 4"),
+        ("#####", "Header 5"),
+        ("######", "Header 6"),
+    ]
+
+    for root, dirs, files in os.walk('data/markdowns'):
+        for file in files:
+            if file.lower().endswith(".md"):
+                file_path = os.path.join(root, file)
+                print(f"[database]: Loading from local Markdown file: {file_path}")
+                with open(file_path, "r", encoding="utf-8") as f:
+                    markdown_content = f.read()
+                markdown_splitter = MarkdownHeaderTextSplitter(
+                    headers_to_split_on=headers_to_split_on,
+                    strip_headers=False # 每个块中保留标题信息
+                )
+                markdown_content = _normalize_empty_lines(markdown_content)
+                initial_splits = markdown_splitter.split_text(markdown_content)
+                # 对每个初步分割的块，检查其大小并可能进行进一步分割
+                for split in initial_splits:
+                    # 先获取每个split的页面内容
+                    split_content = split.page_content
+
+                    # 检查内容大小是否超过 CHUNK_SIZE
+                    if len(split_content) > CHUNK_SIZE:
+                        print(f"Chunk exceeds CHUNK_SIZE, applying RecursiveCharacterTextSplitter.")
+                        recursive_splitter = RecursiveCharacterTextSplitter(
+                            chunk_size=CHUNK_SIZE,
+                            chunk_overlap=CHUNK_OVERLAP,
+                            separators=[
+                                "\n\n", "\n", " ", ".", "。", ";", "；",
+                            ],
+                            keep_separator=False
+                        )
+                        # 先分割页面内容
+                        refined_splits = recursive_splitter.split_text(split_content)
+                        refined_splits = [_normalize_empty_lines(s) for s in refined_splits]
+
+                        # 需要重新创建 Document 对象，并保留元数据
+                        for refined_split in refined_splits:
+                            documents.append(Document(page_content=refined_split, metadata=split.metadata))
+                    else:
+                        # 如果没有超过大小限制，直接将split添加到文档中
+                        documents.append(split)
+
 
     for url in sorted_urls:
         # 使用 SHA256 哈希生成文件名，确保一致性
@@ -63,11 +133,10 @@ def _get_contents(urls):
             print(f"[database]: Downloading content for: {url} {url_hash}.pkl")
             loader = WebBaseLoader(url)
             content = loader.load()
-
+            content = _normalize_empty_lines(content)
             # 缓存下载内容
             with open(cache_file, "wb") as f:
                 pickle.dump(content, f)
-
         # 分割文本内容
         separators = [
             "\n\n",
