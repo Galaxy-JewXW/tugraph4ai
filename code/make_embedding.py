@@ -1,4 +1,7 @@
 import os
+import pickle
+import hashlib
+from urllib.parse import urlparse
 
 os.environ["USER_AGENT"] = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -37,8 +40,6 @@ def _get_crawl_urls(filename=None) -> dict:
 
     return all_links
 
-import os
-import pickle
 
 def _get_contents(urls):
     # 存储路径：假设存储在当前目录下的缓存文件夹
@@ -47,25 +48,36 @@ def _get_contents(urls):
         os.makedirs(cache_dir)
     sorted_urls = sorted(urls)
     documents = list()
+
     for url in sorted_urls:
-        cache_file = os.path.join(cache_dir, f"{hash(url)}.pkl")
-        
+        # 使用 SHA256 哈希生成文件名，确保一致性
+        url_hash = hashlib.sha256(url.encode("utf-8")).hexdigest()
+        cache_file = os.path.join(cache_dir, f"{url_hash}.pkl")
+
         # 如果缓存文件存在，则加载缓存
         if os.path.exists(cache_file):
-            print(f"[database]: Loading from cache: {url} {hash(url)}.pkl")
-            with open(cache_file, 'rb') as f:
+            print(f"[database]: Loading from cache: {url} {url_hash}.pkl")
+            with open(cache_file, "rb") as f:
                 content = pickle.load(f)
         else:
-            print(f"[database]: Downloading content for: {url} {hash(url)}.pkl")
+            print(f"[database]: Downloading content for: {url} {url_hash}.pkl")
             loader = WebBaseLoader(url)
             content = loader.load()
-            
+
             # 缓存下载内容
-            with open(cache_file, 'wb') as f:
+            with open(cache_file, "wb") as f:
                 pickle.dump(content, f)
-        
+
         # 分割文本内容
-        separators = ["\n\n", "\n", " ", ".", "。", ";", "；",]
+        separators = [
+            "\n\n",
+            "\n",
+            " ",
+            ".",
+            "。",
+            ";",
+            "；",
+        ]
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=CHUNK_SIZE,  # 每个文本块的最大字符数
             chunk_overlap=CHUNK_OVERLAP,  # 相邻文本块之间的重叠字符数
@@ -83,6 +95,7 @@ def get_docs():
     documents = _get_contents(urls)
     return documents
 
+
 def _get_embedding_model():
     model_name = EMBEDDING_MODEL_NAME
     model_kwargs = {"device": "cuda"}
@@ -93,20 +106,19 @@ def _get_embedding_model():
         model_name=model_name,
         model_kwargs=model_kwargs,
         encode_kwargs=encode_kwargs,
-        query_instruction="为这个句子生成表示以用于检索相关文章："
+        query_instruction="为这个句子生成表示以用于检索相关文章：",
     )
     return embedding
+
 
 def _create_db(documents, embedding):
     # AISS在高效相似度搜索和GPU加速方面表现出色
     # ChromaDB则提供了全面的数据库功能和分布式处理能力
-    db = FAISS.from_documents(
-        documents, 
-        embedding=embedding
-    )
+    db = FAISS.from_documents(documents, embedding=embedding)
     db.save_local(f"data/{EMBEDDING_DB_NAME}")
 
     return db
+
 
 def make_embedding_db():
     # 获取原先的爬取的网页文档
@@ -128,6 +140,7 @@ def make_embedding_db():
     print(f"[embedding]: !!!!!!!!!!!!!!!!!!!!!!!\n\n")
     return db
 
+
 if __name__ == "__main__":
     # 基于爬虫文档创建向量数据库
     db = make_embedding_db()
@@ -136,8 +149,4 @@ if __name__ == "__main__":
     search_num = SEARCH_NUM
     retriever = db.as_retriever(search_kwargs={"k": search_num})
 
-    print(
-        retriever.get_relevant_documents(
-            "当前图数据库应用程序使用的CPU比率是多少？"
-        )
-    )
+    print(retriever.get_relevant_documents("当前图数据库应用程序使用的CPU比率是多少？"))
