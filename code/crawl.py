@@ -118,7 +118,19 @@ doc_urls = [
     "https://zhuanlan.zhihu.com/p/699593887",
     # "https://tugraph-analytics.github.io/news/2023/06/21/%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB-TuGraph-Analytics-%E6%B5%81%E5%BC%8F%E5%9B%BE%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E5%85%A5%E9%80%89%E5%9B%BD%E9%99%85%E9%A1%B6%E4%BC%9A-SIGMOD.html",
     "https://mp.weixin.qq.com/s/X3hx_y-e7XP1VQHoeRHnDA",
-    "https://mp.weixin.qq.com/s/6rGFoPbULBwXZxzqc5Xgtg"
+    "https://mp.weixin.qq.com/s/6rGFoPbULBwXZxzqc5Xgtg",
+    "https://mp.weixin.qq.com/s/X3hx_y-e7XP1VQHoeRHnDA",
+    "https://mp.weixin.qq.com/s/6rGFoPbULBwXZxzqc5Xgtg",
+    "https://segmentfault.com/a/1190000043845602",
+    "https://www.biaodianfu.com/geabase.html",
+    "https://segmentfault.com/a/1190000016458610",
+    "https://www.modb.pro/wiki/535",
+    "https://blog.csdn.net/weixin_34008933/article/details/88730916",
+    "https://www.infoq.cn/article/PMbTNl1UC7xVcuefI6Kt",
+    "https://www.infoq.cn/article/UH2mrQCzlbsKbh9cLSMZ",
+    "https://developer.aliyun.com/article/650972",
+    "https://blog.csdn.net/TuGraph/article/details/130967486",
+    "https://segmentfault.com/a/1190000044138463",
 ]
 
 def crawl_all_urls():
