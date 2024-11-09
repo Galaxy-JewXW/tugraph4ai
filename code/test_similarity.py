@@ -2,9 +2,11 @@ from sentence_transformers import SentenceTransformer, util
 import torch
 import json
 
+from setting import *
+
 def get_similarity(sen1: str, sen2: str):
     # 加载预训练模型
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer(model_name_or_path=SOTA_SIMILARITY_NAME)
 
     # 将句子转换为句子嵌入
     embedding1 = model.encode(sen1, convert_to_tensor=True)
@@ -20,7 +22,7 @@ def get_similarity(sen1: str, sen2: str):
 def compute_val():
     # 定义文件路径
     file_ans = 'data/val.jsonl'
-    result_dir  = 'result/'
+    result_dir  = 'result/v1.0/'
     file_result = result_dir + 'test_ans.jsonl'
 
     # 初始化字典存储文件1和文件2的输出字段

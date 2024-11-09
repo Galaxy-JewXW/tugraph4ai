@@ -15,6 +15,8 @@ EMBEDDING_DB_NAME = f"embedding_{CHUNK_SIZE}_{CHUNK_OVERLAP}"
 EMBEDDING_MODEL_NAME = "BAAI/bge-large-zh-v1.5"
 # 用于重排的模型名
 RERANKER_MODEL_NAME = "BAAI/bge-reranker-large"
+# 用于计算相似度的SOTA模型
+SOTA_SIMILARITY_NAME = "BAAI/bge-large-zh-v1.5"
 
 # 用于问答的LLM
 LLM_MODEL_NAME = "GLM-4-PLus"
