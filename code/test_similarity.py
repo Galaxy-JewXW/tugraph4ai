@@ -68,11 +68,3 @@ def compute_val(result_dir='result/'):
             print(content)
             outfile.write(content)
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
-
-if __name__ == "__main__":
-    compute_val('result/v1.0/')
-    compute_val('result/v2.0/')
-    compute_val('result/v2.5_rag/')
-    compute_val('result/v2.6_brief/')
-    compute_val('result/v2.7_new/')
-    compute_val('result/v3.0_brief_prompt/')
