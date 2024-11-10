@@ -230,15 +230,17 @@ def _create_db(documents, embedding):
 
 def make_embedding_db():
     # 获取原先的爬取的网页文档
-    # crawl_file = "data/successful_urls.txt"
-    # urls = _get_crawl_urls(crawl_file)
-    # print(f"[embedding]: [{len(urls)}] urls got")
-
+    crawl_file = "data/successful_urls.txt"
+    urls = _get_crawl_urls(crawl_file)
+    print(f"[embedding]: [{len(urls)}] urls got")
     # 将提取到的子页面分解为更小的文本块
-    # documents = _get_contents(urls)
+    url_documents = _get_contents(urls)
 
     # 读取本地存储好的markdown文件
-    documents = _get_markdown('data/docs')
+    doc_documents = _get_markdown('data/docs')
+    print(f"[embedding]: {len(doc_documents)} docs got")
+    
+    documents = url_documents + doc_documents
     print(f"[embedding]: {len(documents)} documents got")
 
     # 将文本转换为向量化实例

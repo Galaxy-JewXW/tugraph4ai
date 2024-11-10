@@ -1,0 +1,50 @@
+{"id": "VAL-1", "output_field": "3"}
+{"id": "VAL-2", "output_field": "磁盘IO请求数量大于10000时会触发危急颜色模式。"}
+{"id": "VAL-3", "output_field": "`IsReal()` 函数用于查询 `FieldData` 类中数据是否为实数类型。该函数返回一个布尔值，指示数据是否属于实数。常用于数据类型校验。"}
+{"id": "VAL-4", "output_field": "200"}
+{"id": "VAL-5", "output_field": "是的，边关联的两个点的字段必须是点的主键。在定义边时，`srcId` 和 `targetId` 必须对应点的 `id` 字段。这样可以确保边的起点和终点与具体的点实例正确关联。"}
+{"id": "VAL-6", "output_field": "删除当前指向的出边，使迭代器失效。在最后一个出边上调用 Delete 也会使迭代器失效。"}
+{"id": "VAL-7", "output_field": "通过修改配置文件`config.yaml`中的`server.log_level`参数，或使用命令行选项`--verbose`调整TuGraph-DB的日志等级。可选值为debug, info, warn, error。"}
+{"id": "VAL-8", "output_field": "\"Memory\"在机器性能指标中指的是内存，用于衡量计算机存储和处理数据的能力。它影响系统运行速度和多任务处理能力。通常以GB或MB为单位表示。"}
+{"id": "VAL-9", "output_field": "每次执行查询的结果会追加至画布区域。"}
+{"id": "VAL-10", "output_field": "发送邮件至tugraph@service.alipay.com，提出您的建议。邮件内容应清晰描述您的建议和期望。如有具体问题或反馈，可详细说明。"}
+{"id": "VAL-11", "output_field": "TuGraph 在引擎层支持边索引，但暂不支持查询加速。"}
+{"id": "VAL-12", "output_field": "TuGraph Monitor的主要功能是通过C++ RPC Client与TuGraph通信，查询TuGraph服务所在机器的性能指标，并将结果包装成Prometheus需要的数据模型，供Prometheus获取，用户可设置查询时间间隔以最小化对业务查询的影响。"}
+{"id": "VAL-13", "output_field": "`lgraph_peer`工具"}
+{"id": "VAL-14", "output_field": "通过POST方法修改Token的有效期为无限期，需向`/update_token_time`接口发送请求，包含`Authorization`、`refresh_time`和`expire_time`三个参数，其中`refresh_time`和`expire_time`均设置为0。例如：\n\n```\nPOST http://localhost:7070/update_token_time\nAccept: application/json; charset=UTF-8\nContent-Type: application/json; charset=UTF-8\nInput:\n{\n\"Authorization\": \"Bearer <your_jwt_token>\",\n\"refresh_time\": 0,\n\"expire_time\": 0\n}\n```\n\n成功后返回200状态码。"}
+{"id": "VAL-15", "output_field": "蚂蚁集团与清华大学"}
+{"id": "VAL-16", "output_field": "TuGraph图学习模块依赖于TuGraph-db 3.5.1及以上版本，并推荐使用tugraph-compile 1.2.4及以上版本的Docker镜像进行部署。"}
+{"id": "VAL-17", "output_field": "构造FieldSpec时需要三个参数：字段名（n）、字段类型（t）以及一个布尔值（nu），表示字段是否可选。"}
+{"id": "VAL-18", "output_field": "Antlr4 C++ target 的并发性能不足以支持超高并发 GQL 请求。"}
+{"id": "VAL-19", "output_field": "C++客户端中实例化单节点client对象需要三个参数：url（格式为ip:port）、用户名和密码。"}
+{"id": "VAL-20", "output_field": "TuGraph-DB查询引擎目前支持Cypher查询语言，计划在未来支持ISO GQL查询语言。"}
+{"id": "VAL-21", "output_field": "DeleteProcedure 函数接受两个参数：一个整型参数命名为 procedureId，一个字符串参数命名为 userId。"}
+{"id": "VAL-22", "output_field": "在FrontierTraversal中并行执行遍历时，必须使用支持并行处理的事务模式。"}
+{"id": "VAL-23", "output_field": "RpcSingleClient 构造函数需要三个参数：url（登录地址）、user（用户名）、password（密码）。"}
+{"id": "VAL-24", "output_field": "TuGraph中expire_time的默认设置是0，表示永不过期。"}
+{"id": "VAL-25", "output_field": "Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling"}
+{"id": "VAL-26", "output_field": "根据提供的参数，如果两点之间不存在某条类型的边，则插入新边并返回True；如果已存在，则更新该边的属性并返回True。如果操作失败（如边的标签不存在），则返回False。"}
+{"id": "VAL-27", "output_field": "ANTLR4支持生成Java、Python、C++、JavaScript、Go等10种目标语言的解析器。"}
+{"id": "VAL-28", "output_field": "会抛出OutOfRange异常。"}
+{"id": "VAL-29", "output_field": "VertexLockGuard是一个在构造时自动获取锁，在析构时自动释放锁的类，用于保护对点数据的访存权限。它通过内部指针`lock_`管理锁状态，确保线程安全。"}
+{"id": "VAL-30", "output_field": "\"Value pack\"时的\"null array\"通常指在特定数据结构或编程上下文中，一个被声明但未初始化或明确赋值的数组，其内容为空或未定义。这可能导致程序在尝试访问或操作该数组时出现错误或异常行为。具体含义可能因不同的编程语言或应用场景而有所差异。"}
+{"id": "VAL-31", "output_field": "TuGraph支持边属性匹配。您提供的Cypher查询语句格式是正确的，如果遇到无法过滤边属性的问题，可能是由于边属性不存在或者查询语句中的属性名称与实际属性不匹配。请确认边属性`name`确实存在，并且其值为`\"生活补贴\"`。如果问题依旧存在，建议查阅用户文档或发起新的讨论帖来获得更具体的帮助。"}
+{"id": "VAL-32", "output_field": "TuGraph通过`CALL db.createVertexLabel`语句定义点类型，通过`CALL db.createEdgeLabel`语句定义边类型，并在创建时指定标签、主键、属性及其类型等参数。"}
+{"id": "VAL-33", "output_field": "是的，如果`log_dir`不设置，日志将不会保存为文件，而是输出到控制台（daemon模式下则不输出）。"}
+{"id": "VAL-34", "output_field": "在实际应用中，`algo.shortestPath` 算法可以用于查找社交网络中两个用户之间的最短路径，例如找到用户A和用户B之间的最少好友关系连接。也可以用于地图导航，确定起点和终点之间的最短路线。此外，还可以用于分析网络拓扑结构，如确定数据中心服务器之间的最短通信路径。"}
+{"id": "VAL-35", "output_field": "字符串类型的结果。"}
+{"id": "VAL-36", "output_field": "v1"}
+{"id": "VAL-37", "output_field": "gtest框架"}
+{"id": "VAL-38", "output_field": "需要指定。通过`is_vertex`字段来区分Label是点（vertex）还是边（relationship）。"}
+{"id": "VAL-39", "output_field": "简单图分析操作和复杂图分析操作"}
+{"id": "VAL-40", "output_field": "在TuGraph-DB中，通过包含`tools/lgraph_log.h`头文件并使用提供的日志宏（如`LOG_DEBUG()`、`LOG_INFO()`、`LOG_WARN()`、`LOG_ERROR()`）来增加日志输出埋点。在函数中插入相应的日志宏，传入日志消息即可。例如：`LOG_INFO() << \"这是一条信息级别的日志消息\";`。"}
+{"id": "VAL-41", "output_field": "InputError"}
+{"id": "VAL-42", "output_field": "Grafana主要用于数据的可视化和分析，能够从多个数据源（如Prometheus）获取数据，并将时序数据库中的数据转换为图形和可视化效果。"}
+{"id": "VAL-43", "output_field": "DeleteProcedure 函数用于删除存储过程。它从数据库中移除指定的存储过程定义。通常用于数据库管理和优化。"}
+{"id": "VAL-44", "output_field": "在用户指定的key后附加源点和目标点的vid，每个vid为5bytes，形成最大长度为470bytes的索引键。"}
+{"id": "VAL-45", "output_field": "类FieldData用于表示字段数据，包括但不限于文本、数字、日期等类型的数据。具体类型取决于其在代码中的实现和应用场景。从上下文中无法确定具体包含哪些类型的数据。"}
+{"id": "VAL-46", "output_field": "在线全量导入TuGraph时，如果发生数据包错误，默认行为是停止导入并打印出已导入的包数。"}
+{"id": "VAL-47", "output_field": "`ORDER BY`在GQL中对输出的结果进行排序。它是`RETURN`子句的一部分，用于指定结果集的排列顺序。通过`ORDER BY`，可以按照特定字段升序或降序排列数据。"}
+{"id": "VAL-48", "output_field": "TuGraph-DB提供遵从REST规范的HTTP API，开发者可通过HTTP请求远程调用其服务。接口代码通常在TuGraph的官方文档或代码库中。"}
+{"id": "VAL-49", "output_field": "不是，lgraph_peer工具在HA集群启动后即可使用，不限于编译方式部署。"}
+{"id": "VAL-50", "output_field": "当前图数据库应用程序使用的CPU比率信息未在提供的上下文中给出，无法确定具体数值。如需了解，请提供相关监控数据或系统资源使用情况。"}
