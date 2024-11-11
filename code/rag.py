@@ -93,7 +93,7 @@ class RAG:
 
         PROMPT_TEMPLATE = """
         As a specialized AI assistant for question-answering, I will use the given context to provide a clear and concise response to your query in no more than three sentences, without adding any LLM-specific filler words such as '好的' or '从资料中可以得出'. If the necessary information is not available, I will let you know.
-        Aanswer in a brief way.
+        Aanswer in a brief way. If there is a clear answer to the question, just provide the answer without explanation.
         Context:
         {context}
         ---

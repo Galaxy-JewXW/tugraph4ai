@@ -10,5 +10,82 @@ ID: VAL-2, 相似度: 0.6993799656629562:
 	value大于10000时。
 	磁盘IO速率（resources_report中的disk_rate）
 
+ID: VAL-44, 相似度: 0.7067700177431107:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex 的钥匙生成形式是将两个字段的值组合成一个唯一标识，通常采用“字段1值_字段2值”的格式，确保每个组合在数据集中是唯一的。
+
+ID: VAL-38, 相似度: 0.7228758186101913:
+	是的，需要指定。
+	需要指定。在创建 Label 的请求中，必须通过 `is_vertex` 字段明确指定该 Label 是点（vertex）还是边（relationship）。如果是点，还需设置 `primary` 字段作为主键属性；如果是边，则可设置 `edge_constraints` 字段来限制边的起点和终点。
+
+ID: VAL-35, 相似度: 0.7280333936214447:
+	The label.
+	字符串
+
+ID: VAL-30, 相似度: 0.7371183037757874:
+	标记field是否为空
+	"Value pack"时的"null array"通常指一个空数组，即没有任何元素的数组。在某些编程或数据处理场景中，它可能用于表示无数据或默认状态。具体含义需结合上下文确定。
+
+ID: VAL-43, 相似度: 0.7381000816822052:
+	执行用户定义的程序。
+	DeleteProcedure 函数用于删除存储过程。它从数据库中移除指定的存储过程定义。通常用于数据库维护和优化。
+
+ID: VAL-1, 相似度: 0.739862710237503:
+	三个级别（0，1，2）。
+	3
+
+ID: VAL-31, 相似度: 0.7423232197761536:
+	可以写where语句进行过滤
+	TuGraph支持边属性匹配。您提供的Cypher查询语句格式是正确的，但可能存在一些问题导致无法过滤边属性。请检查以下几点：
+1. 确保边属性`name`存在且正确。
+2. 检查是否有语法错误或拼写错误。
+3. 确认边标签`kw`正确。
+
+如果以上检查无误，请尝试使用其他属性或条件进行过滤，或者提供更详细的错误信息以便进一步分析。
+
+ID: VAL-34, 相似度: 0.7689629197120667:
+	MATCH (n1 {name:'Hugo Weaving'}),(n2 {title:'The Matrix'}) CALL algo.shortestPath(n1,n2) YIELD nodeCount,totalCost RETURN nodeCount,totalCost
+	在实际应用中，调用 `algo.shortestPath` 算法的一个例子是查找社交网络中两个用户之间的最短路径。例如，找到用户 A 和用户 B 之间的最短好友关系链，以便了解他们是如何连接的。通过指定起点和终点节点，以及配置参数如最大跳数和关系查询类型，可以获取这两点间的最短路径及其相关成本。这在社交网络分析、推荐系统等领域非常有用。
+
+ID: VAL-24, 相似度: 0.7720135450363159:
+	expire_time实体定义为强制过期时间戳，默认设置为24小时。
+	24小时
+
+ID: VAL-10, 相似度: 0.7976939678192139:
+	邮件地址为tugraph@service.alipay.com。
+	请通过官网提供的联系方式中的邮箱发送您的建议。具体邮箱信息可在官网或相关联系图片中找到。
+
+ID: VAL-6, 相似度: 0.8139714002609253:
+	Deletes current edge. The iterator will point to the next out edge if there is any.
+	删除当前边，并将迭代器指向按（标签、事务ID、目标顶点、边ID）排序的下一个出边，若无更多出边则迭代器变为无效。
+
+ID: VAL-21, 相似度: 0.8167597651481628:
+	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
+	DeleteProcedure 函数接受一个整型参数和一个字符串参数，分别命名为 `procedureId` 和 `procedureName`。
+
+ID: VAL-37, 相似度: 0.8193343281745911:
+	TuGraph单元测试采用gtest框架。
+	gtest框架
+
+ID: VAL-25, 相似度: 0.8255357444286346:
+	Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling。
+	TuGraph图学习模块中包括的四种采样算子是：Neighbor Sampling（邻居采样）、Edge Sampling（边采样）、Random Walk Sampling（随机游走采样）和Negative Sampling（负采样）。
+
+ID: VAL-14, 相似度: 0.8272481560707092:
+	通过设置refresh_time和expire_time参数均为0。
+	使用POST方法，向`/update_token_time`接口发送请求，并在请求体中设置`refresh_time`和`expire_time`为0。
+
+ID: VAL-33, 相似度: 0.8424916863441467:
+	是的，如果指定log_dir为""，再以后台运行方式启动server，就不会生成log了。如开debug了确实会频繁刷日志。日志是滚动生成的，超过256M就会生成一个新的日志文件，之前的日志文件就可以删了，可以手动清理。
+	是的，如果log_dir不设置，日志信息将不会保存到文件中，而是输出到控制台。在daemon模式下，若log_dir为空，则不会向控制台输出任何日志。
+
+ID: VAL-32, 相似度: 0.8431288003921509:
+	点类型通过调用 `db.createVertexLabelByJson` 创建，边类型通过 `db.createEdgeLabelByJson` 创建。
+	在TuGraph中，点类型和边类型是通过JSON格式的定义来创建的。点类型的定义包含了标签、主键、类型（VERTEX）、是否允许删除属性、属性列表等信息，每个属性包括名称、类型、是否可选、是否索引、是否唯一等。边类型的定义包含了标签、类型（EDGE）、起/终点类型、属性列表等信息，属性列表的定义与点类型相同。
+
+ID: VAL-17, 相似度: 0.8443164527416229:
+	需要字段名称、字段类型和一个布尔值标识字段是否可选。
+	构造FieldSpec时需要三个参数：字段名称（n）、字段类型（t）、字段是否可选（nu）。
+
 
 平均余弦相似度: 0.8530444520711898
