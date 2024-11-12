@@ -68,3 +68,7 @@ def compute_val(result_dir='result/'):
             print(content)
             outfile.write(content)
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
+
+if __name__ == "__main__":
+    compute_val('result/test/')
+    
