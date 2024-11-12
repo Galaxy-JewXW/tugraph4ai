@@ -1,0 +1,50 @@
+{"id": "VAL-1", "output_field": "3"}
+{"id": "VAL-2", "output_field": "IOPS\n\n（注：假设上下文中提到的是IOPS值大于10000时会触发危急颜色模式，如果实际上下文不同，请提供具体上下文以便给出准确答案。）"}
+{"id": "VAL-3", "output_field": "`IsReal()` 函数用来查询实数类型的数据。"}
+{"id": "VAL-4", "output_field": "200"}
+{"id": "VAL-5", "output_field": "不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性字段，具体取决于业务需求和边的定义。"}
+{"id": "VAL-6", "output_field": "删除当前边，并将迭代器指向下一个按（标签、tid、目标顶点、边ID）排序的出边。如果没有更多出边，迭代器变为无效。"}
+{"id": "VAL-7", "output_field": "通过修改配置文件中的`verbose`配置项来调整日志等级。"}
+{"id": "VAL-8", "output_field": "内存\n\n('output_field': '内存')"}
+{"id": "VAL-9", "output_field": "如果不选择清空画布数据按钮，每次执行查询的结果会追加至画布区域。"}
+{"id": "VAL-10", "output_field": "通过邮箱提出建议的具体方式未在提供的资料中明确说明。建议参考文档中的其他联系方式获取更多信息。"}
+{"id": "VAL-11", "output_field": "支持。边索引可以加速查询。"}
+{"id": "VAL-12", "output_field": "TuGraph Monitor的主要功能是作为TuGraph服务的客户端，通过TCP链接向TuGraph服务发起Procedure请求，查询TuGraph服务所在机器的性能指标，并将TuGraph返回的结果包装成Prometheus需要的数据模型，等待Prometheus获取。"}
+{"id": "VAL-13", "output_field": "`lgraph_peer`"}
+{"id": "VAL-14", "output_field": "使用POST方法，访问`/update_token_time`接口，传递参数`Authorization`为Token，`refresh_time`和`expire_time`都设置为0。"}
+{"id": "VAL-15", "output_field": "蚂蚁集团与清华大学。"}
+{"id": "VAL-16", "output_field": "TuGraph图学习模块依赖于Python环境。"}
+{"id": "VAL-17", "output_field": "字段名称（n）、字段类型（t）、是否可选（nu）"}
+{"id": "VAL-18", "output_field": "TuGraph DB的并发性能优化最初面临的主要问题是Antlr4 C++ target的并发性能不足以支持所需的超高并发GQL请求。"}
+{"id": "VAL-19", "output_field": "ip地址和端口、用户名、密码。"}
+{"id": "VAL-20", "output_field": "TuGraph-DB查询引擎目前支持使用Cypher查询语言，并计划在未来支持ISO GQL查询语言。"}
+{"id": "VAL-21", "output_field": "result, procedure_type, procedure_name, graph"}
+{"id": "VAL-22", "output_field": "只读模式。"}
+{"id": "VAL-23", "output_field": "url, user, password"}
+{"id": "VAL-24", "output_field": "24小时"}
+{"id": "VAL-25", "output_field": "Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling。"}
+{"id": "VAL-26", "output_field": "若边不存在则插入，返回True；若边存在则更新，返回False。"}
+{"id": "VAL-27", "output_field": "ANTLR4支持生成Java、Python、C++、JavaScript、Go等10种目标语言的解析器。"}
+{"id": "VAL-28", "output_field": "抛出OutOfRange异常。"}
+{"id": "VAL-29", "output_field": "VertexLockGuard是一个自动获取和释放顶点锁的类，用于在构造时自动加锁，在析构时自动解锁，以确保对图中的顶点进行正确的并发更新。"}
+{"id": "VAL-30", "output_field": "\"null array\"在\"value pack\"时的具体含义是指一个数组中没有任何元素，即空数组。"}
+{"id": "VAL-31", "output_field": "TuGraph支持边属性匹配。"}
+{"id": "VAL-32", "output_field": "通过字符串三元组定义 (源节点类型, 边类型, 目标节点类型)。"}
+{"id": "VAL-33", "output_field": "是的，如果log_dir不设置，日志会输出到控制台，但在daemon模式下不会输出任何日志到控制台。"}
+{"id": "VAL-34", "output_field": "在实际应用中，`algo.shortestPath` 可以用于查找社交网络中两个用户之间的最短路径，例如找到用户A和用户B之间的最少好友关系层数。或者用于交通网络中，计算从一个地点到另一个地点的最短路线。"}
+{"id": "VAL-35", "output_field": "字符串"}
+{"id": "VAL-36", "output_field": "Rust 存储过程目前仅支持v1版本。"}
+{"id": "VAL-37", "output_field": "gtest"}
+{"id": "VAL-38", "output_field": "需要"}
+{"id": "VAL-39", "output_field": "简单分析操作和复杂分析操作。"}
+{"id": "VAL-40", "output_field": "在TuGraph-DB中，开发者可以通过包含`tools/lgraph_log.h`头文件并使用提供的日志宏来增加日志输出埋点。例如：\n\n```cpp\n#include \"tools/lgraph_log.h\"\n\nvoid LogExample() {\n    LOG_DEBUG() << \"This is a debug level log message.\";\n    LOG_INFO() << \"This is a info level log message.\";\n    LOG_WARN() << \"This is a warning level log message.\";\n    LOG_ERROR() << \"This is a error level log message.\";\n    LOG_FATAL() << \"This is a fatal level log message.\";\n}\n```\n\n具体使用方式可参考`test/test_lgraph_log.cpp`中的示例。"}
+{"id": "VAL-41", "output_field": "InputError"}
+{"id": "VAL-42", "output_field": "Grafana主要用于数据的可视化和分析，能够从多个数据源获取数据，并将其转换为图形和可视化效果的工具。"}
+{"id": "VAL-43", "output_field": "删除过程或函数。"}
+{"id": "VAL-44", "output_field": "PairUniqueIndex的钥匙生成形式是将两个字段的值组合成一个唯一标识符。通常采用“字段1值_字段2值”的格式。例如，若字段1为“ID”，字段2为“Name”，则钥匙可能为“1234_John”。"}
+{"id": "VAL-45", "output_field": "'类FieldData用于表示文本、数字和日期类型的数据。'"}
+{"id": "VAL-46", "output_field": "如果发生数据包错误，默认行为是停止导入并打印出已导入的包数。"}
+{"id": "VAL-47", "output_field": "ORDER BY用于对查询结果进行排序。"}
+{"id": "VAL-48", "output_field": "TuGraph-DB有HTTP接口。"}
+{"id": "VAL-49", "output_field": "是的，lgraph_peer工具通常需要编译部署后才能使用。"}
+{"id": "VAL-50", "output_field": "25"}
