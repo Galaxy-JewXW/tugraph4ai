@@ -54,7 +54,7 @@ def compute_val(result_dir='result/'):
             count += 1
 
             print(f"{similarity}\t{id}:\n\t{output1}\n\t{output2}\n")
-            if similarity < 0.7:
+            if similarity < 0.85:
                 error_list.append((id, similarity, output1, output2))
 
     # 计算平均相似度
@@ -70,5 +70,4 @@ def compute_val(result_dir='result/'):
         outfile.write(f"\n平均余弦相似度: {average_similarity}\n")
 
 if __name__ == "__main__":
-    compute_val('result/test/')
-    
+    compute_val('result/v4.0/')
