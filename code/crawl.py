@@ -131,6 +131,8 @@ doc_urls = [
     "https://developer.aliyun.com/article/650972",
     "https://blog.csdn.net/TuGraph/article/details/130967486",
     "https://segmentfault.com/a/1190000044138463",
+    "https://tugraph-db.readthedocs.io/zh-cn/stable/6.utility-tools/5.ha-cluster-management.html",
+    "https://tugraph-db.readthedocs.io/zh-cn/v4.3.2/5.installation%26running/8.high-availability-mode.html"
 ]
 
 def crawl_all_urls():
