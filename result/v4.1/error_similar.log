@@ -1,0 +1,74 @@
+ID: VAL-24, 相似度: 0.744633287191391:
+	expire_time实体定义为强制过期时间戳，默认设置为24小时。
+	24小时
+
+ID: VAL-44, 相似度: 0.7493104040622711:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex的钥匙生成形式是将两个字段的值组合成一个唯一标识符。通常采用“字段1值_字段2值”的格式。例如，若字段1为“ID”，字段2为“Name”，则钥匙可能为“1234_John”。
+
+ID: VAL-31, 相似度: 0.7522037625312805:
+	可以写where语句进行过滤
+	TuGraph支持边属性匹配。
+
+ID: VAL-35, 相似度: 0.7676794528961182:
+	The label.
+	字符串
+
+ID: VAL-30, 相似度: 0.7736444473266602:
+	标记field是否为空
+	"null array"在"value pack"时的具体含义是指一个数组中没有任何元素，即空数组。
+
+ID: VAL-34, 相似度: 0.7776259779930115:
+	MATCH (n1 {name:'Hugo Weaving'}),(n2 {title:'The Matrix'}) CALL algo.shortestPath(n1,n2) YIELD nodeCount,totalCost RETURN nodeCount,totalCost
+	在实际应用中，`algo.shortestPath` 可以用于查找社交网络中两个用户之间的最短路径，例如找到用户A和用户B之间的最少好友关系层数。或者用于交通网络中，计算从一个地点到另一个地点的最短路线。
+
+ID: VAL-1, 相似度: 0.7787375748157501:
+	三个级别（0，1，2）。
+	3
+
+ID: VAL-5, 相似度: 0.7948716282844543:
+	是的
+	不一定。边关联的两个点的字段可以是点的主键，也可以是其他属性字段，具体取决于业务需求和边的定义。
+
+ID: VAL-8, 相似度: 0.8004866242408752:
+	“memory”是内存，是用于监控服务性能的重要指标之一。
+	内存
+
+('output_field': '内存')
+
+ID: VAL-32, 相似度: 0.8006218671798706:
+	点类型通过调用 `db.createVertexLabelByJson` 创建，边类型通过 `db.createEdgeLabelByJson` 创建。
+	通过字符串三元组定义 (源节点类型, 边类型, 目标节点类型)。
+
+ID: VAL-37, 相似度: 0.8026932775974274:
+	TuGraph单元测试采用gtest框架。
+	gtest
+
+ID: VAL-2, 相似度: 0.803573340177536:
+	value大于10000时。
+	IOPS
+
+（注：假设上下文中提到的是IOPS值大于10000时会触发危急颜色模式，如果实际上下文不同，请提供具体上下文以便给出准确答案。）
+
+ID: VAL-10, 相似度: 0.8106582760810852:
+	邮件地址为tugraph@service.alipay.com。
+	通过邮箱提出建议的具体方式未在提供的资料中明确说明。建议参考文档中的其他联系方式获取更多信息。
+
+ID: VAL-11, 相似度: 0.8232733607292175:
+	暂不支持
+	支持。边索引可以加速查询。
+
+ID: VAL-43, 相似度: 0.8338786363601685:
+	执行用户定义的程序。
+	删除过程或函数。
+
+ID: VAL-19, 相似度: 0.8406446576118469:
+	需要url（如"127.0.0.1:19099"）、user（如"admin"）和password（如"73@TuGraph"）。
+	ip地址和端口、用户名、密码。
+
+ID: VAL-21, 相似度: 0.8452058732509613:
+	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
+	result, procedure_type, procedure_name, graph
+
+
+平均余弦相似度: 0.8801120167970657

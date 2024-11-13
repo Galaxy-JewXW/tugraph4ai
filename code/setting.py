@@ -17,7 +17,8 @@ EMBEDDING_MODEL_NAME = "BAAI/bge-m3"
 # 用于重排的模型名
 RERANKER_MODEL_NAME = "BAAI/bge-reranker-large"
 # 用于计算相似度的SOTA模型
-SOTA_SIMILARITY_NAME = "BAAI/bge-large-zh-v1.5"
+# SOTA_SIMILARITY_NAME = "BAAI/bge-large-zh-v1.5"
+SOTA_SIMILARITY_NAME = "BAAI/bge-m3"
 
 # 用于问答的LLM
 LLM_MODEL_NAME = "GLM-4-PLus"
