@@ -12,7 +12,8 @@ CHUNK_OVERLAP = 512
 EMBEDDING_DB_NAME = f"embedding_{CHUNK_SIZE}_{CHUNK_OVERLAP}"
 
 # 用于将文档转换为向量库的模型名
-EMBEDDING_MODEL_NAME = "BAAI/bge-large-zh-v1.5"
+# EMBEDDING_MODEL_NAME = "BAAI/bge-large-zh-v1.5"
+EMBEDDING_MODEL_NAME = "BAAI/bge-m3"
 # 用于重排的模型名
 RERANKER_MODEL_NAME = "BAAI/bge-reranker-large"
 # 用于计算相似度的SOTA模型

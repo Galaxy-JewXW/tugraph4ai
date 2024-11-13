@@ -1,0 +1,114 @@
+ID: VAL-50, 相似度: 0.6565040051937103:
+	25%
+	当前图数据库应用程序的CPU使用率未知，需更多细节或监控数据来确定。
+
+ID: VAL-22, 相似度: 0.688178226351738:
+	事务必须是只读的。
+	在 FrontierTraversal 中并行执行遍历，需选用支持并行操作的事务模式，确保数据一致性和性能优化。具体模式名称需查阅相关文档确认。
+
+ID: VAL-5, 相似度: 0.6914699524641037:
+	是的
+	边关联字段不限于主键，依业务和配置而定。
+
+ID: VAL-41, 相似度: 0.7007966637611389:
+	InputError。
+	删除边全文索引时，边标签或字段不存在会抛出`NotFoundException`。
+
+ID: VAL-44, 相似度: 0.7085833996534348:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex 通过组合两个字段值生成唯一键，如"123_abc"，确保唯一性。
+
+ID: VAL-35, 相似度: 0.7280333936214447:
+	The label.
+	字符串
+
+ID: VAL-31, 相似度: 0.7332355082035065:
+	可以写where语句进行过滤
+	TuGraph支持边属性匹配，但需检查Cypher语法或版本兼容性。
+
+ID: VAL-34, 相似度: 0.7354962080717087:
+	MATCH (n1 {name:'Hugo Weaving'}),(n2 {title:'The Matrix'}) CALL algo.shortestPath(n1,n2) YIELD nodeCount,totalCost RETURN nodeCount,totalCost
+	地图导航中最短路径计算。
+
+ID: VAL-37, 相似度: 0.7449823915958405:
+	TuGraph单元测试采用gtest框架。
+	gtest
+
+ID: VAL-45, 相似度: 0.7576262950897217:
+	FieldData用于表示布尔、整型、浮点数、双精度浮点数、字符串、日期、时间、点、线串、多边形、空间数据、浮点向量以及BLOB数据。
+	字段与属性数据
+
+ID: VAL-30, 相似度: 0.7704919278621674:
+	标记field是否为空
+	空数组在value pack时表示无有效数据或元素，可能因数据缺失或未初始化，需结合具体情境理解。
+
+ID: VAL-24, 相似度: 0.7720135450363159:
+	expire_time实体定义为强制过期时间戳，默认设置为24小时。
+	24小时
+
+ID: VAL-2, 相似度: 0.777059942483902:
+	value大于10000时。
+	IOPS>10000触发危急颜色模式
+
+ID: VAL-43, 相似度: 0.7895345091819763:
+	执行用户定义的程序。
+	删除特定过程或存储过程。
+
+ID: VAL-26, 相似度: 0.8061424195766449:
+	如果边已存在，则返回False；如果新建了边，则返回True。
+	返回新创建或更新后的边的详细信息。
+
+ID: VAL-32, 相似度: 0.8099306523799896:
+	点类型通过调用 `db.createVertexLabelByJson` 创建，边类型通过 `db.createEdgeLabelByJson` 创建。
+	TuGraph用字符串三元组(源节点类型, 边类型, 目标节点类型)定义点类型和边类型。
+
+ID: VAL-8, 相似度: 0.8229312896728516:
+	“memory”是内存，是用于监控服务性能的重要指标之一。
+	内存
+
+ID: VAL-6, 相似度: 0.8237742781639099:
+	Deletes current edge. The iterator will point to the next out edge if there is any.
+	删除指向边。
+
+ID: VAL-10, 相似度: 0.8274628520011902:
+	邮件地址为tugraph@service.alipay.com。
+	致信 contact@modb.pro 提TuGraph建议。
+
+ID: VAL-11, 相似度: 0.828715443611145:
+	暂不支持
+	不支持加速。
+
+ID: VAL-13, 相似度: 0.8338818848133087:
+	管理工具为lgraph_peer。
+	lgraph_peer
+
+ID: VAL-17, 相似度: 0.8418386876583099:
+	需要字段名称、字段类型和一个布尔值标识字段是否可选。
+	构造FieldSpec需字段名（string）、字段类型（FieldType）、是否可选（bool）。
+
+ID: VAL-38, 相似度: 0.8429591059684753:
+	是的，需要指定。
+	需要指定是否为点或边
+
+ID: VAL-33, 相似度: 0.8437609672546387:
+	是的，如果指定log_dir为""，再以后台运行方式启动server，就不会生成log了。如开debug了确实会频繁刷日志。日志是滚动生成的，超过256M就会生成一个新的日志文件，之前的日志文件就可以删了，可以手动清理。
+	未设置log_dir则不保存日志文件，仅在控制台显示（daemon模式无输出）。
+
+ID: VAL-19, 相似度: 0.8440737426280975:
+	需要url（如"127.0.0.1:19099"）、user（如"admin"）和password（如"73@TuGraph"）。
+	ip、端口、用户名、密码。
+
+ID: VAL-21, 相似度: 0.8446953892707825:
+	接受 std::string &result, const std::string &procedure_type, const std::string &procedure_name, const std::string &graph。
+	接受整型`id`和字符串`procedureName`参数。
+
+ID: VAL-1, 相似度: 0.8448588252067566:
+	三个级别（0，1，2）。
+	3级
+
+ID: VAL-25, 相似度: 0.8484993577003479:
+	Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling。
+	TuGraph图学习模块包含Neighbor、Edge、Random Walk和Negative四种采样算子。
+
+
+平均余弦相似度: 0.8407683569192886
