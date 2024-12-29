@@ -1,0 +1,82 @@
+ID: VAL-5, 相似度: 0.6614885330200195:
+	是的
+	边关联字段不限于主键，可以是任何符合业务需求的属性字段。
+
+ID: VAL-44, 相似度: 0.7072701305150986:
+	如果 src_vid < dst_vid, 关键是 (index field value + src_vid + dst_vid); 如果 src_vid > dst_vid, 关键是 (index field value + dst_vid + src_vid)。
+	PairUniqueIndex通过连接两个字段值（如"123"和"abc"）生成唯一钥匙，形式如"123_abc"或"123abc"，具体取决于实现方式。
+
+ID: VAL-35, 相似度: 0.7280333936214447:
+	The label.
+	字符串
+
+ID: VAL-31, 相似度: 0.7286721915006638:
+	可以写where语句进行过滤
+	TuGraph支持边属性匹配。
+
+ID: VAL-37, 相似度: 0.7449823915958405:
+	TuGraph单元测试采用gtest框架。
+	gtest
+
+ID: VAL-2, 相似度: 0.7543627321720123:
+	value大于10000时。
+	磁盘IO速率>10000触发危急颜色模式
+
+ID: VAL-11, 相似度: 0.7544600367546082:
+	暂不支持
+	边索引不直接支持查询加速。
+
+ID: VAL-34, 相似度: 0.7584262490272522:
+	MATCH (n1 {name:'Hugo Weaving'}),(n2 {title:'The Matrix'}) CALL algo.shortestPath(n1,n2) YIELD nodeCount,totalCost RETURN nodeCount,totalCost
+	`algo.shortestPath` 用于在社交网络中找到用户间最短联系路径，或在交通网络中找到地点间最短行车路线。通过指定起止节点和参数，高效获取最短路径信息。
+
+ID: VAL-19, 相似度: 0.7633798122406006:
+	需要url（如"127.0.0.1:19099"）、user（如"admin"）和password（如"73@TuGraph"）。
+	C++客户端实例化单节点client对象需服务器URL、用户名、密码三个参数。
+
+ID: VAL-30, 相似度: 0.7652691006660461:
+	标记field是否为空
+	空数组在value pack时表示无相关数据或默认状态。
+
+ID: VAL-45, 相似度: 0.7657531201839447:
+	FieldData用于表示布尔、整型、浮点数、双精度浮点数、字符串、日期、时间、点、线串、多边形、空间数据、浮点向量以及BLOB数据。
+	字段和属性数据
+
+ID: VAL-24, 相似度: 0.7720135450363159:
+	expire_time实体定义为强制过期时间戳，默认设置为24小时。
+	24小时
+
+ID: VAL-43, 相似度: 0.7731149196624756:
+	执行用户定义的程序。
+	删除存储过程。
+
+ID: VAL-47, 相似度: 0.8093118667602539:
+	ORDER BY是GQL子句的一部分，用于对查询结果进行排序。
+	排序结果
+
+ID: VAL-10, 相似度: 0.8159877061843872:
+	邮件地址为tugraph@service.alipay.com。
+	联系TuGraph团队：钉钉、微信、公众号、邮箱或电话。
+
+ID: VAL-8, 相似度: 0.8229312896728516:
+	“memory”是内存，是用于监控服务性能的重要指标之一。
+	内存
+
+ID: VAL-13, 相似度: 0.8338818848133087:
+	管理工具为lgraph_peer。
+	lgraph_peer
+
+ID: VAL-6, 相似度: 0.8390410542488098:
+	Deletes current edge. The iterator will point to the next out edge if there is any.
+	删除当前边，迭代器指向下一条出边或失效。
+
+ID: VAL-32, 相似度: 0.8415597081184387:
+	点类型通过调用 `db.createVertexLabelByJson` 创建，边类型通过 `db.createEdgeLabelByJson` 创建。
+	TuGraph通过JSON格式定义点类型和边类型。
+
+ID: VAL-25, 相似度: 0.8484993577003479:
+	Neighbor Sampling、Edge Sampling、Random Walk Sampling 和 Negative Sampling。
+	TuGraph图学习模块包含Neighbor、Edge、Random Walk和Negative四种采样算子。
+
+
+平均余弦相似度: 0.86076640188694

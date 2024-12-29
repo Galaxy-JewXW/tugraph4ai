@@ -1,0 +1,50 @@
+{"id": "VAL-1", "output_field": "3个级别"}
+{"id": "VAL-2", "output_field": "磁盘IO速率>10000触发危急颜色模式"}
+{"id": "VAL-3", "output_field": "`IsReal()` 查询实数数据。"}
+{"id": "VAL-4", "output_field": "200"}
+{"id": "VAL-5", "output_field": "边关联字段不限于主键，可以是任何符合业务需求的属性字段。"}
+{"id": "VAL-6", "output_field": "删除当前边，迭代器指向下一条出边或失效。"}
+{"id": "VAL-7", "output_field": "调整TuGraph-DB日志等级，通过`verbose`配置项设为`0, 1, 2`，默认为`1`。"}
+{"id": "VAL-8", "output_field": "内存"}
+{"id": "VAL-9", "output_field": "不选清空按钮，查询结果将追加到画布。"}
+{"id": "VAL-10", "output_field": "联系TuGraph团队：钉钉、微信、公众号、邮箱或电话。"}
+{"id": "VAL-11", "output_field": "边索引不直接支持查询加速。"}
+{"id": "VAL-12", "output_field": "TuGraph Monitor主要功能是作为客户端请求TuGraph服务获取系统指标（如CPU、内存等），并将数据转换为Prometheus格式供其抓取。"}
+{"id": "VAL-13", "output_field": "lgraph_peer"}
+{"id": "VAL-14", "output_field": "设置`refresh_time`和`expire_time`为0。"}
+{"id": "VAL-15", "output_field": "TuGraph由蚂蚁集团和清华大学联合研发。"}
+{"id": "VAL-16", "output_field": "TuGraph图学习模块依赖TuGraph系统。"}
+{"id": "VAL-17", "output_field": "字段名、字段类型、是否可选"}
+{"id": "VAL-18", "output_field": "TuGraph DB并发性能优化初期的主问题是Antlr4 C++并发性能不足，难以支撑高并发GQL请求。"}
+{"id": "VAL-19", "output_field": "C++客户端实例化单节点client对象需服务器URL、用户名、密码三个参数。"}
+{"id": "VAL-20", "output_field": "TuGraph-DB支持Cypher，计划支持ISO GQL。"}
+{"id": "VAL-21", "output_field": "'int id', 'string procedureName'"}
+{"id": "VAL-22", "output_field": "只读事务模式。"}
+{"id": "VAL-23", "output_field": "url、user、password"}
+{"id": "VAL-24", "output_field": "24小时"}
+{"id": "VAL-25", "output_field": "TuGraph图学习模块包含Neighbor、Edge、Random Walk和Negative四种采样算子。"}
+{"id": "VAL-26", "output_field": "插入新边返回True，更新现有边返回False。"}
+{"id": "VAL-27", "output_field": "ANTLR4支持生成Java、Python等10种语言的解析器。"}
+{"id": "VAL-28", "output_field": "抛出OutOfRange异常"}
+{"id": "VAL-29", "output_field": "VertexLockGuard是自动管理顶点锁的类，用于并发更新时保证图数据正确性。"}
+{"id": "VAL-30", "output_field": "空数组在value pack时表示无相关数据或默认状态。"}
+{"id": "VAL-31", "output_field": "TuGraph支持边属性匹配。"}
+{"id": "VAL-32", "output_field": "TuGraph通过JSON格式定义点类型和边类型。"}
+{"id": "VAL-33", "output_field": "未设置log_dir时，日志不保存至文件，仅在控制台显示；daemon模式下无输出。"}
+{"id": "VAL-34", "output_field": "`algo.shortestPath` 用于在社交网络中找到用户间最短联系路径，或在交通网络中找到地点间最短行车路线。通过指定起止节点和参数，高效获取最短路径信息。"}
+{"id": "VAL-35", "output_field": "字符串"}
+{"id": "VAL-36", "output_field": "Rust 存储过程支持 v1 版本。"}
+{"id": "VAL-37", "output_field": "gtest"}
+{"id": "VAL-38", "output_field": "需要指定"}
+{"id": "VAL-39", "output_field": "TuGraph 主要使用简单和复杂两种图分析操作。"}
+{"id": "VAL-40", "output_field": "在TuGraph-DB中，增加日志输出埋点需包含`tools/lgraph_log.h`头文件，并使用日志宏（如`LOG_DEBUG()`、`LOG_INFO()`等）记录日志。具体示例可参考`test/test_lgraph_log.cpp`。"}
+{"id": "VAL-41", "output_field": "InputError"}
+{"id": "VAL-42", "output_field": "Grafana用于数据可视化和分析。"}
+{"id": "VAL-43", "output_field": "删除存储过程。"}
+{"id": "VAL-44", "output_field": "PairUniqueIndex通过连接两个字段值（如\"123\"和\"abc\"）生成唯一钥匙，形式如\"123_abc\"或\"123abc\"，具体取决于实现方式。"}
+{"id": "VAL-45", "output_field": "字段和属性数据"}
+{"id": "VAL-46", "output_field": "停止导入，显示已导入包数。"}
+{"id": "VAL-47", "output_field": "排序结果"}
+{"id": "VAL-48", "output_field": "TuGraph-DB提供HTTP接口，详情见RESTful API文档。"}
+{"id": "VAL-49", "output_field": "lgraph_peer工具需编译部署后使用。"}
+{"id": "VAL-50", "output_field": "25%"}
